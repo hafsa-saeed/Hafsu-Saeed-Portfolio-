@@ -16,18 +16,21 @@ export const personalInfo = {
     "AI-Powered Dev Specialist",
     "Tech Enthusiast & Learner",
   ],
-  bio: "Motivated and dedicated Computer Science student with a strong passion for learning, problem solving, and modern technology. Experienced in networking and educational teaching, with an active focus on full-stack web development, data analytics, and modern AI tooling. Eager to grow, innovate, and make a positive impact in the global tech ecosystem.",
+  bio: "Motivated Computer Science Student maintaining a 3.71 CGPA. Passionate about Web development, adapting to emerging modern technologies, and leveraging AI tools to accelerate software development.",
   quote: "The expert in anything was once a beginner.",
   quoteAuthor: "Helen Hayes",
-  email: "hafsasaeed1074@gmail.com",
+  email: "hafsasaeed192@gmail.com",
   phone1: "0327-5535987",
   phone2: "0319-8114339",
-  location: "Mianwali, Punjab, Pakistan",
-  age: "20 Years Old",
+  location: "Homelife Hostel, PAF Road, Mianwali, Punjab, Pakistan",
+  age: "21 Years Old",
   gender: "Female",
   religion: "Islam",
   nationality: "Pakistani",
   maritalStatus: "Single",
+
+  profileImage: "public/my-photo.jpg",
+  resumeUrl: "public/Hafsa_Saeed_CV.pdf",
   languages: [
     { name: "Urdu", level: "Native Speaker" },
     { name: "English", level: "Proficient Professional" },
@@ -36,8 +39,8 @@ export const personalInfo = {
     github: "https://github.com/#",
     linkedin: "https://linkedin.com/in/#",
     twitter: "https://twitter.com/#",
-    email: "mailto:hafsasaeed1074@gmail.com",
-    whatsapp: "https://wa.me/923275535987",
+    email: "mailto:hafsasaeed192@gmail.com",
+    whatsapp: "https://wa.me/923461617836",
   },
   stats: [
     {
@@ -79,7 +82,7 @@ export const educationList: EducationItem[] = [
     degree: "BS Computer Science",
     institute: "Superior Group of Colleges, Mianwali",
     year: "Sep 2023 – 2027",
-    grade: "Currently in 6th Semester",
+    grade: "Maintaining 3.71 CGPA",
     status: "In Progress (2 Semesters Remaining)",
     highlights: [
       "Currently pursuing 6th Semester with strong focus on software engineering.",
@@ -91,7 +94,7 @@ export const educationList: EducationItem[] = [
     id: "fsc",
     degree: "FSC Pre-Medical",
     institute: "Superior Group of Colleges, Mianwali",
-    year: "Graduated in 2023",
+    year: "Completed in 2023",
     grade: "848 / 1100 (Grade A)",
     status: "Completed with Distinction",
     highlights: [
@@ -103,7 +106,7 @@ export const educationList: EducationItem[] = [
     id: "matric",
     degree: "Matriculation (Science)",
     institute: "Govt. Girls Higher Secondary School Kundian",
-    year: "Graduated in 2021",
+    year: "Completed in 2021",
     grade: "1074 / 1100 (Grade A+)",
     status: "Top Academic Honors",
     highlights: [
@@ -517,8 +520,7 @@ export const credentialsList: CredentialItem[] = [
       "SEO Basics",
     ],
     category: "Web Development",
-    imageThumbnail:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80",
+    imageThumbnail: "public/credentials/wordpress-certificate.jpg",
   },
   {
     id: "cred-da",
@@ -534,25 +536,9 @@ export const credentialsList: CredentialItem[] = [
       "Strategic Planning",
     ],
     category: "Data Science & Analytics",
-    imageThumbnail:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    imageThumbnail: "public/credentials/data-analytics-certificate.jpg",
   },
-  {
-    id: "cred-sts",
-    title: "STS Practical Networking Hands-on Experience",
-    issuer: "Success Training System (STS)",
-    date: "Completed Dec 2023",
-    credentialId: "STS-NET-2023-06",
-    skillsLearned: [
-      "Network Architecture",
-      "LAN Maintenance",
-      "Cable Termination & Switches",
-      "Troubleshooting Protocols",
-    ],
-    category: "Computer Networking",
-    imageThumbnail:
-      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
-  },
+
   {
     id: "cred-office",
     title: "Office Automation & Productivity Suite",
@@ -566,8 +552,7 @@ export const credentialsList: CredentialItem[] = [
       "Speed Typing",
     ],
     category: "Office Automation",
-    imageThumbnail:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+    imageThumbnail: "public/credentials/office-automation-certificate.jpg",
   },
   {
     id: "cred-matric",
@@ -581,7 +566,35 @@ export const credentialsList: CredentialItem[] = [
       "Physics & Chemistry Distinction",
     ],
     category: "Academic Distinction",
-    imageThumbnail:
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+    imageThumbnail: "public/credentials/matric-result-card.jpg",
+  },
+  {
+    id: "cred-fsc",
+    title: "FSC Academic Honors (Grade A)",
+    issuer: "Board of Intermediate & Secondary Education",
+    date: "Awarded 2023",
+    credentialId: "BISE-848-DIST",
+    skillsLearned: [
+      "848/1100 Marks (97.6%)",
+      "Mathematics Excellence",
+      "Physics & Chemistry Distinction",
+    ],
+    category: "Academic Distinction",
+    imageThumbnail: "public/credentials/fsc-result-card.jpg",
+  },
+  {
+    id: "cred-bc",
+    title: "BS Computer Science Academic Honors (Maintaining 3.71 CGPA)",
+    issuer:
+      "Academic Institution Superior Group of Colleges, Mianwali, Ailiated from Sargodha University",
+    date: "Expected degree completion: End of 2027",
+    credentialId: "6th semester continue",
+    skillsLearned: [
+      "3.71 CGPA (Maintaining) / 4.00",
+      "Computer Science ",
+      "C, C++, Python, Data Structures, Web Development, Networking, Operating system, Database Management, AI Tools, and Software Engineering",
+    ],
+    category: "Academic Distinction",
+    imageThumbnail: "public/credentials/bs-cs-5th-sem-transcript.jpg",
   },
 ];

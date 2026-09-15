@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Award,
   Eye,
   Download,
   CheckCircle2,
@@ -13,6 +12,18 @@ import { CredentialItem } from "../types";
 
 export const CredentialsSection: React.FC = () => {
   const [activeCert, setActiveCert] = useState<CredentialItem | null>(null);
+
+  // Download Handler for Real Image/Document File
+  const handleDownload = (imageUrl: string, title: string) => {
+    const link = document.createElement("a");
+    link.href = imageUrl;
+    // Cleans title to construct a proper file name
+    const fileName = `${title.toLowerCase().replace(/[^a-z0-9]/g, "-")}.jpg`;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section
@@ -113,67 +124,47 @@ export const CredentialsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Certificate Modal */}
+        {/* Real Image Preview Modal */}
         {activeCert && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-            <div className="relative w-full max-w-xl bg-white dark:bg-[#071912] rounded-3xl p-6 sm:p-8 shadow-2xl border border-emerald-500/30">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+            <div className="relative w-full max-w-4xl max-h-[92vh] bg-white dark:bg-[#071912] rounded-3xl p-4 sm:p-6 shadow-2xl border border-emerald-500/30 flex flex-col overflow-hidden">
+              {/* Close Button */}
               <button
                 onClick={() => setActiveCert(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-stone-100 dark:bg-[#092218] text-stone-600 dark:text-stone-300 hover:bg-emerald-500 hover:text-white transition-colors cursor-pointer"
+                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-stone-100 dark:bg-[#092218] text-stone-600 dark:text-stone-300 hover:bg-emerald-500 hover:text-white transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="text-center mb-5">
-                <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                  Verified Completion
+              {/* Modal Header */}
+              <div className="text-left mb-4 pr-10 shrink-0">
+                <span className="px-3 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold uppercase tracking-wider">
+                  Verified Document
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-stone-900 dark:text-white mt-2">
+                <h3 className="text-lg sm:text-2xl font-bold text-stone-900 dark:text-white mt-1">
                   {activeCert.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 mt-1">
-                  Issued by{" "}
-                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-                    {activeCert.issuer}
-                  </span>{" "}
-                  • {activeCert.date}
+                <p className="text-xs text-stone-500 dark:text-stone-400">
+                  {activeCert.issuer} • {activeCert.date}
                 </p>
               </div>
 
-              {/* Certificate Decorative Frame */}
-              <div className="border-4 border-double border-emerald-500/30 rounded-2xl p-6 bg-gradient-to-b from-emerald-50/40 via-white to-stone-50 dark:from-[#092218] dark:via-[#071912] dark:to-[#040f0a] text-center mb-6 shadow-inner">
-                <Award className="w-12 h-12 text-amber-500 mx-auto mb-3" />
-                <div className="text-xs uppercase tracking-widest text-stone-400 font-bold mb-1">
-                  Certificate of Achievement
-                </div>
-                <div className="text-lg font-bold text-stone-900 dark:text-white mb-2">
-                  Hafsa Saeed
-                </div>
-                <p className="text-xs text-stone-600 dark:text-stone-300 max-w-md mx-auto leading-relaxed">
-                  Has successfully fulfilled all curriculum requirements,
-                  practical examinations, and project assignments in{" "}
-                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-                    {activeCert.title}
-                  </span>
-                  .
-                </p>
-                {activeCert.credentialId && (
-                  <div className="mt-4 pt-3 border-t border-emerald-500/20 text-[11px] font-mono text-stone-500 dark:text-stone-400">
-                    Credential ID: {activeCert.credentialId}
-                  </div>
-                )}
+              {/* Real Full Image Display Container */}
+              <div className="flex-1 min-h-0 bg-stone-900/50 rounded-2xl border border-emerald-500/20 overflow-y-auto p-2 flex items-center justify-center">
+                <img
+                  src={activeCert.imageThumbnail}
+                  alt={activeCert.title}
+                  className="max-w-full max-h-[58vh] object-contain rounded-lg shadow-md"
+                />
               </div>
 
               {/* Competencies Mastered */}
-              <div className="mb-6">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">
-                  Competencies Mastered:
-                </h4>
+              <div className="my-3 shrink-0">
                 <div className="flex flex-wrap gap-1.5">
                   {activeCert.skillsLearned.map((skill, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 rounded-lg text-xs bg-emerald-50 dark:bg-[#092218] text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 font-medium"
+                      className="px-2 py-0.5 rounded-md text-[11px] bg-emerald-50 dark:bg-[#092218] text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 font-medium"
                     >
                       {skill}
                     </span>
@@ -182,30 +173,19 @@ export const CredentialsSection: React.FC = () => {
               </div>
 
               {/* Modal Actions */}
-              <div className="flex gap-3">
+              <div className="flex gap-3 shrink-0 pt-2 border-t border-emerald-500/20">
                 <button
-                  onClick={() => {
-                    const element = document.createElement("a");
-                    const file = new Blob(
-                      [
-                        `Certificate: ${activeCert.title}\nRecipient: Hafsa Saeed\nIssuer: ${activeCert.issuer}\nDate: ${activeCert.date}\nCredential ID: ${activeCert.credentialId || "N/A"}`,
-                      ],
-                      { type: "text/plain" },
-                    );
-                    element.href = URL.createObjectURL(file);
-                    element.download = `${activeCert.id}-credential.txt`;
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                  }}
-                  className="flex-1 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-md shadow-emerald-500/25"
+                  onClick={() =>
+                    handleDownload(activeCert.imageThumbnail, activeCert.title)
+                  }
+                  className="flex-1 py-2.5 sm:py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-md shadow-emerald-500/25"
                 >
                   <Download className="w-4 h-4" />
-                  <span>Download Verified Document</span>
+                  <span>Download Actual Document Image</span>
                 </button>
                 <button
                   onClick={() => setActiveCert(null)}
-                  className="py-3 px-5 rounded-xl bg-stone-100 dark:bg-[#092218] hover:bg-stone-200 dark:hover:bg-[#103427] text-stone-700 dark:text-stone-300 font-semibold text-xs sm:text-sm transition-colors border border-stone-200 dark:border-emerald-500/25 cursor-pointer"
+                  className="py-2.5 sm:py-3 px-5 rounded-xl bg-stone-100 dark:bg-[#092218] hover:bg-stone-200 dark:hover:bg-[#103427] text-stone-700 dark:text-stone-300 font-semibold text-xs sm:text-sm transition-colors border border-stone-200 dark:border-emerald-500/25 cursor-pointer"
                 >
                   Close
                 </button>

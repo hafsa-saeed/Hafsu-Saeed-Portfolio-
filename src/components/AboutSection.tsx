@@ -120,12 +120,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                   {personalInfo.bio}
                 </p>
                 <p className="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
-                  With a solid foundation in both educational instruction and
-                  hands-on networking, I bring disciplined organizational
-                  stamina to my computer science studies. Today, I actively
-                  build web applications using React, Node, and Python,
-                  constantly leveraging AI dev tools to accelerate software
-                  craftsmanship.
+                  My core technical focus centers on crafting robust web
+                  solutions using React, Node.js, and modern databases, paired
+                  with algorithmic problem-solving. Beyond traditional
+                  programming, I actively integrate AI-driven
+                  workflows—leveraging tools like Gemini, Claude, and AI coding
+                  assistants—to accelerate development and engineer smarter
+                  digital products.
                 </p>
               </div>
 

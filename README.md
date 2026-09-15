@@ -226,16 +226,16 @@ export const personalInfo = {
   title: "BS Computer Science Student & Full Stack Web Developer",
   tagline:
     "Crafting responsive, high-performance web solutions with modern tools.",
-  location: "Mianwali, Punjab, Pakistan",
-  phone1: "+92 300 0000000", // <-- Put your first phone number
-  phone2: "+92 311 0000000", // <-- Put your second phone number
-  email: "hafsasaeed1074@gmail.com",
+  location: "Homelife Hostel, PAF Road, Mianwali, Punjab, Pakistan",
+  phone1: "+92 3461617836",
+  phone2: "+92 3290209836",
+  email: "hafsasaeed192@gmail.com",
 
   socials: {
     linkedin: "https://www.linkedin.com/in/your-profile-url/",
     github: "https://github.com/your-github-username",
     twitter: "https://twitter.com/your-handle",
-    email: "mailto:hafsasaeed1074@gmail.com",
+    email: "mailto:hafsasaeed192@gmail.com",
     whatsapp:
       "https://wa.me/923000000000?text=Hello%20Hafsa,%20I%20visited%20your%20portfolio!",
   },

@@ -217,7 +217,7 @@ export const ContactSection: React.FC = () => {
       setServerFeedback({
         success: true,
         delivered: true,
-        message: `We opened Gmail Web in a new tab with your message pre-filled to hafsasaeed1074@gmail.com. Just click "Send" in that Gmail tab to deliver it directly!`,
+        message: `We opened Gmail Web in a new tab with your message pre-filled to hafsasaeed192@gmail.com. Just click "Send" in that Gmail tab to deliver it directly!`,
         gmailComposeUrl: composeUrl,
         mailtoUrl: mailto,
         whatsappUrl: wa,
@@ -527,7 +527,7 @@ export const ContactSection: React.FC = () => {
                 </h3>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-500/30 text-xs font-semibold text-emerald-700 dark:text-emerald-400 shrink-0 w-fit">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  Direct to hafsasaeed1074@gmail.com
+                  Direct to hafsasaeed192@gmail.com
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mb-6">

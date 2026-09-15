@@ -123,7 +123,7 @@ export const CVSection: React.FC<CVSectionProps> = ({ onOpenCVModal }) => {
                   <span className="font-semibold text-stone-800 dark:text-stone-100">
                     Phone:
                   </span>
-                  <span>{personalInfo.phone1}</span>
+                  <span>{personalInfo.phone2}</span>
                 </div>
               </div>
             </div>
@@ -154,7 +154,7 @@ export const CVSection: React.FC<CVSectionProps> = ({ onOpenCVModal }) => {
                       FSC Pre-Medical (Grade A, 848/1100)
                     </div>
                     <div className="text-emerald-600 dark:text-emerald-400 text-xs">
-                      Superior Group of Colleges (2023)
+                      Superior Group of Colleges (2021 - 2023)
                     </div>
                   </div>
                   <div className="border-l-2 border-stone-300 dark:border-emerald-500/30 pl-3">
@@ -162,7 +162,7 @@ export const CVSection: React.FC<CVSectionProps> = ({ onOpenCVModal }) => {
                       Matriculation Science (Grade A+, 1074/1100)
                     </div>
                     <div className="text-emerald-600 dark:text-emerald-400 text-xs">
-                      Govt. Girls Higher Secondary School Kundian (2021)
+                      Govt. Girls Higher Secondary School Kundian (2019 - 2021)
                     </div>
                   </div>
                 </div>
@@ -196,7 +196,8 @@ export const CVSection: React.FC<CVSectionProps> = ({ onOpenCVModal }) => {
                     </div>
                     <div className="text-xs text-stone-600 dark:text-stone-300 mt-1">
                       Taught computer science curricula, basic programming
-                      constructs, typing speed, and office applications.
+                      constructs, typing speed, and office applications,
+                      English, Methamatics, General Science
                     </div>
                   </div>
                 </div>
@@ -210,7 +211,8 @@ export const CVSection: React.FC<CVSectionProps> = ({ onOpenCVModal }) => {
                 </h4>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div>
-                    <strong>Frontend:</strong> React, HTML5, CSS3, Tailwind, JS
+                    <strong>Frontend:</strong> React, HTML5, CSS3, Tailwind, JS,
+                    Bootstrap, Next.js, TypeScript,
                   </div>
                   <div>
                     <strong>Backend:</strong> Node.js, Express, REST APIs,
@@ -220,7 +222,19 @@ export const CVSection: React.FC<CVSectionProps> = ({ onOpenCVModal }) => {
                     <strong>Databases:</strong> MongoDB, MySQL
                   </div>
                   <div>
-                    <strong>AI Tools:</strong> Lovable, Claude, Cursor, ChatGPT
+                    <strong>Additional:</strong> Git , Github
+                  </div>
+                  <div>
+                    <strong>AI Tools:</strong> Lovable, Claude, Cursor, ChatGPT,
+                    Menus, Google AI studio, Gemini
+                  </div>
+                  <div>
+                    <strong>Programming skills:</strong> C, C++, Java, Python,
+                    JavaScript, Numby, Pandas,Data Structure and algorithm,
+                  </div>
+                  <div>
+                    <strong>Courses:</strong> Wordpress, Data Analytics &
+                    Business Development, Office Automization
                   </div>
                 </div>
               </div>
