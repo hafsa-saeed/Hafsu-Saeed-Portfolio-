@@ -1,7 +1,15 @@
+export type ProjectCategory =
+  | "all"
+  | "fullstack"
+  | "frontend"
+  | "ai"
+  | "big"
+  | "mini";
+
 export interface Project {
   id: string;
   title: string;
-  category: "all" | "web" | "ai" | "data" | "cms";
+  category: ProjectCategory; // Strict category type for error-free filtering
   description: string;
   longDescription: string;
   image: string;

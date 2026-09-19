@@ -7,25 +7,24 @@ import {
   X,
   Layers,
   CheckCircle2,
-  ArrowRight,
 } from "lucide-react";
-import { projectsList, personalInfo } from "../data/portfolioData";
-import { ProjectItem } from "../types";
+import { projectsList } from "../data/portfolioData";
+import { ProjectItem } from "../types.ts";
 
 export const ProjectsSection: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<
-    "All" | "Full Stack" | "Frontend" | "Systems" | "Academic"
-  >("All");
+  const [activeFilter, setActiveFilter] = useState<string>("All");
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
     null,
   );
 
+  // Dynamic filter buttons generated directly from project categories
+  const categories = Array.from(
+    new Set(projectsList.map((p) => p.category)),
+  ).filter(Boolean);
+
   const filterButtons = [
     { id: "All", label: "All Projects" },
-    { id: "Full Stack", label: "Full Stack" },
-    { id: "Frontend", label: "Frontend & UI" },
-    { id: "Systems", label: "Systems & Networking" },
-    { id: "Academic", label: "Academic" },
+    ...categories.map((cat) => ({ id: cat, label: cat })),
   ];
 
   const filteredProjects =
@@ -46,23 +45,25 @@ export const ProjectsSection: React.FC = () => {
             <span>Featured Portfolio</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 dark:text-white tracking-tight">
-            Crafted{" "}
+            Featured{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">
               Projects
             </span>
           </h2>
           <p className="text-stone-600 dark:text-stone-300 mt-2 text-sm sm:text-base">
-            A curated showcase of applications spanning full-stack web
-            platforms, network topologies, and interactive user interfaces.
+            Engineered with modern tools, disciplined architectures, and
+            optimized for performance, these projects showcase my hands-on
+            expertise in full-stack development, seamless user interactions, and
+            responsive design.
           </p>
         </div>
 
-        {/* Filter Badges */}
+        {/* Dynamic Filter Badges */}
         <div className="flex items-center justify-center flex-wrap gap-2 mb-12">
           {filterButtons.map((btn) => (
             <button
               key={btn.id}
-              onClick={() => setActiveFilter(btn.id as any)}
+              onClick={() => setActiveFilter(btn.id)}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                 activeFilter === btn.id
                   ? "bg-emerald-600 text-white shadow-md shadow-emerald-500/30 scale-105"
@@ -141,7 +142,7 @@ export const ProjectsSection: React.FC = () => {
                   <span>Live Demo</span>
                 </button>
                 <a
-                  href={personalInfo.socials.github}
+                  href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="py-2.5 px-3 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-[#092218] dark:hover:bg-[#103427] text-stone-800 dark:text-stone-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors border border-stone-200/80 dark:border-emerald-500/25 cursor-pointer"
@@ -214,7 +215,7 @@ export const ProjectsSection: React.FC = () => {
                   Technologies Employed:
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {selectedProject.tags.map((tag, tIdx) => (
+                  {project.tags?.map((tag, tIdx) => (
                     <span
                       key={tIdx}
                       className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-[#092218] text-emerald-700 dark:text-emerald-300 border border-emerald-500/25"
