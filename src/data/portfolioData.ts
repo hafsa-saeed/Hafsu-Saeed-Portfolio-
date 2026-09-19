@@ -29,7 +29,7 @@ export const personalInfo = {
   nationality: "Pakistani",
   maritalStatus: "Single",
 
-  profileImage: "public/my-photo.jpg",
+  profileImage: "/my-photo.jpg",
   resumeUrl: "public/Hafsa_Saeed_CV.pdf",
   languages: [
     { name: "Urdu", level: "Native Speaker" },
@@ -575,7 +575,7 @@ export const credentialsList: CredentialItem[] = [
       "SEO Basics",
     ],
     category: "Web Development",
-    imageThumbnail: "public/credentials/wordpress-certificate.jpg",
+    imageThumbnail: "/credentials/wordpress-certificate.jpg",
   },
   {
     id: "cred-da",
@@ -591,7 +591,7 @@ export const credentialsList: CredentialItem[] = [
       "Strategic Planning",
     ],
     category: "Data Science & Analytics",
-    imageThumbnail: "public/credentials/data-analytics-certificate.jpg",
+    imageThumbnail: "/credentials/data-analytics-certificate.jpg",
   },
 
   {
@@ -607,7 +607,7 @@ export const credentialsList: CredentialItem[] = [
       "Speed Typing",
     ],
     category: "Office Automation",
-    imageThumbnail: "public/credentials/office-automation-certificate.jpg",
+    imageThumbnail: "/credentials/office-automation-certificate.jpg",
   },
   {
     id: "cred-matric",
@@ -621,7 +621,7 @@ export const credentialsList: CredentialItem[] = [
       "Physics & Chemistry Distinction",
     ],
     category: "Academic Distinction",
-    imageThumbnail: "public/credentials/matric-result-card.jpg",
+    imageThumbnail: "/credentials/matric-result-card.jpg",
   },
   {
     id: "cred-fsc",
@@ -635,7 +635,7 @@ export const credentialsList: CredentialItem[] = [
       "Physics & Chemistry Distinction",
     ],
     category: "Academic Distinction",
-    imageThumbnail: "public/credentials/fsc-result-card.jpg",
+    imageThumbnail: "/credentials/fsc-result-card.jpg",
   },
   {
     id: "cred-bc",
@@ -650,6 +650,6 @@ export const credentialsList: CredentialItem[] = [
       "C, C++, Python, Data Structures, Web Development, Networking, Operating system, Database Management, AI Tools, and Software Engineering",
     ],
     category: "Academic Distinction",
-    imageThumbnail: "public/credentials/bs-cs-5th-sem-transcript.jpg",
+    imageThumbnail: "/credentials/bs-cs-5th-sem-transcript.jpg",
   },
 ];
