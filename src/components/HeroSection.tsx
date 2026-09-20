@@ -78,7 +78,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCVModal }) => {
             <div className="w-full h-full rounded-full overflow-hidden bg-emerald-950 border-4 border-white dark:border-[#0a1e16] relative flex items-center justify-center">
               {/* High-quality portrait representation */}
               <img
-                src="public/my-photo.jpg"
+                src="/my-photo.jpg"
                 alt="Hafsa Saeed"
                 className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
               />

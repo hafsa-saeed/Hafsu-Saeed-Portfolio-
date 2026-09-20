@@ -30,7 +30,7 @@ export const personalInfo = {
   maritalStatus: "Single",
 
   profileImage: "/my-photo.jpg",
-  resumeUrl: "public/Hafsa_Saeed_CV.pdf",
+  resumeUrl: "/Hafsa_Saeed_CV.pdf",
   languages: [
     { name: "Urdu", level: "Native Speaker" },
     { name: "English", level: "Proficient Professional" },
