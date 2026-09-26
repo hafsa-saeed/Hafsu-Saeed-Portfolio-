@@ -555,7 +555,7 @@ export const projectsList: Project[] = [
       "Decentralized 3D medical simulation and surgical practice platform featuring full-body 3D anatomical rendering, instrument arsenal, and proactive AI tutor guidance.",
     longDescription:
       "MediSim3D bridges the gap between classroom theory and operating theatre practice. Built with Next.js, Node.js, Three.js/3D Canvas, and MongoDB. It allows medical students to perform interactive surgical procedures (e.g., Cataract Phacoemulsification) on dynamic 3D organ layers, choose tools from a surgical instrument arsenal, and receive real-time corrective feedback from an integrated AI Tutor.",
-    image: "https://youtu.be/Bi6knrKQfXU?si=7TjI8sgOwMF5-2D1",
+    image: "\projects\medisim3d\hero.jpg",
     tags: [
       "Next.js",
       "React",
