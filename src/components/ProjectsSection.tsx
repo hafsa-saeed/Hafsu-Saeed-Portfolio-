@@ -4,20 +4,24 @@ import {
   Github,
   Sparkles,
   FolderGit2,
-  X,
-  Layers,
+  ArrowLeft,
+  Video,
+  Image as ImageIcon,
   CheckCircle2,
+  Play,
+  ZoomOut,
+  ZoomIn,
 } from "lucide-react";
 import { projectsList } from "../data/portfolioData";
 import { ProjectItem } from "../types.ts";
 
 export const ProjectsSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
+  const [showcaseProject, setShowcaseProject] = useState<ProjectItem | null>(
     null,
   );
+  const [zoomedImageIndex, setZoomedImageIndex] = useState<number | null>(null);
 
-  // Dynamic filter buttons generated directly from project categories
   const categories = Array.from(
     new Set(projectsList.map((p) => p.category)),
   ).filter(Boolean);
@@ -32,6 +36,196 @@ export const ProjectsSection: React.FC = () => {
       ? projectsList
       : projectsList.filter((p) => p.category === activeFilter);
 
+  // Dedicated Showcase View Page
+  if (showcaseProject) {
+    return (
+      <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-900/95 dark:bg-[#030d0a]/98 text-stone-100 backdrop-blur-xl animate-in fade-in duration-300">
+        <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8 relative">
+          {/* Top Bar Navigation */}
+          <div className="flex items-center justify-between border-b border-emerald-500/20 pb-6 mb-8">
+            <button
+              onClick={() => {
+                setShowcaseProject(null);
+                setZoomedImageIndex(null);
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white transition-all text-sm font-semibold cursor-pointer border border-emerald-500/30"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Portfolio</span>
+            </button>
+            <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
+              {showcaseProject.category}
+            </span>
+          </div>
+
+          {/* Title Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-3">
+              {showcaseProject.title}
+            </h1>
+            <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+              {showcaseProject.description}
+            </p>
+          </div>
+
+          {/* SECTION 1: Video Walkthrough */}
+          {showcaseProject.videoUrl ? (
+            <div className="mb-12 rounded-3xl overflow-hidden border border-emerald-500/30 bg-black/60 p-2 sm:p-4 shadow-2xl">
+              <div className="flex items-center gap-2 mb-3 text-emerald-400 font-semibold text-sm px-2">
+                <Video className="w-4 h-4" />
+                <span>Video Walkthrough Demo</span>
+              </div>
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-black">
+                <iframe
+                  src={showcaseProject.videoUrl}
+                  title={showcaseProject.title}
+                  className="w-full h-full border-0"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="mb-12 p-6 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 flex items-center gap-3 text-emerald-300 text-sm">
+              <Video className="w-5 h-5 shrink-0 text-emerald-400" />
+              <span>
+                Video walkthrough for this project is recorded locally. Explore
+                full high-res screenshots and features below!
+              </span>
+            </div>
+          )}
+
+          {/* SECTION 2: Image Gallery Grid with In-Card Zoom Effect */}
+          <div className="mb-12">
+            <div className="flex items-center gap-2 mb-6 text-emerald-400 font-semibold text-base">
+              <ImageIcon className="w-5 h-5" />
+              <span>Project Interface Screenshots & UI Views</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {(showcaseProject.screenshots &&
+              showcaseProject.screenshots.length > 0
+                ? showcaseProject.screenshots
+                : [showcaseProject.image]
+              ).map((imgUrl, idx) => {
+                const isZoomed = zoomedImageIndex === idx;
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => setZoomedImageIndex(isZoomed ? null : idx)}
+                    className={`group relative aspect-16/10 rounded-2xl overflow-hidden border bg-stone-950 cursor-pointer transition-all duration-300 ${
+                      isZoomed
+                        ? "z-30 scale-125 -translate-y-2 border-emerald-400 shadow-2xl shadow-emerald-500/20"
+                        : "z-10 border-emerald-500/20 hover:border-emerald-500 hover:shadow-lg"
+                    }`}
+                  >
+                    <img
+                      src={imgUrl}
+                      alt={`${showcaseProject.title} preview ${idx + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-500"
+                    />
+
+                    {/* Floating Zoom Action Badge */}
+                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="p-1.5 rounded-lg bg-black/80 text-emerald-400 text-xs font-semibold flex items-center gap-1 backdrop-blur-md border border-emerald-500/30">
+                        {isZoomed ? (
+                          <>
+                            <ZoomOut className="w-3.5 h-3.5" /> Close
+                          </>
+                        ) : (
+                          <>
+                            <ZoomIn className="w-3.5 h-3.5" /> Enlarge
+                          </>
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* SECTION 3: Deep Dive Details & Architecture */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 border-t border-emerald-500/20 pt-8">
+            <div className="lg:col-span-2 space-y-6">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Project Overview
+                </h3>
+                <p className="text-stone-300 text-sm leading-relaxed">
+                  {showcaseProject.longDescription}
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-emerald-400 mb-3 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4" />
+                  <span>Key Architecture & Features</span>
+                </h3>
+                <div className="space-y-2">
+                  {showcaseProject.features.map((feat, fIdx) => (
+                    <div
+                      key={fIdx}
+                      className="flex items-start gap-2.5 text-sm text-stone-300"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Tech Stack & Links Sidebar */}
+            <div className="bg-[#071912] p-6 rounded-2xl border border-emerald-500/30 h-fit space-y-6">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-400 block mb-3">
+                  Technologies Employed
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {showcaseProject.tags.map((tag, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-500/30"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-3 border-t border-emerald-500/20 pt-4">
+                {showcaseProject.liveUrl &&
+                  showcaseProject.liveUrl !== "#demo" && (
+                    <a
+                      href={showcaseProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      <span>Launch Live Application</span>
+                    </a>
+                  )}
+                {showcaseProject.githubUrl && (
+                  <a
+                    href={showcaseProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 border border-stone-700 transition-all cursor-pointer"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>View GitHub Source Code</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Standard Section View
   return (
     <section
       id="projects"
@@ -83,7 +277,7 @@ export const ProjectsSection: React.FC = () => {
               className="group bg-white/95 dark:bg-[#071912] border border-emerald-500/20 dark:border-emerald-500/30 rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/15 hover:border-emerald-500/50 shadow-xl backdrop-blur-md"
             >
               <div>
-                {/* Thumbnail Container with Zoom Overlay */}
+                {/* Thumbnail Container */}
                 <div className="relative aspect-16/10 overflow-hidden bg-slate-900">
                   <img
                     src={project.image}
@@ -100,11 +294,11 @@ export const ProjectsSection: React.FC = () => {
                   {/* Quick Inspect Button Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-emerald-950/40 backdrop-blur-[2px]">
                     <button
-                      onClick={() => setSelectedProject(project)}
+                      onClick={() => setShowcaseProject(project)}
                       className="px-4 py-2 rounded-xl bg-white text-stone-900 font-bold text-xs shadow-lg hover:bg-emerald-500 hover:text-white transition-all transform translate-y-2 group-hover:translate-y-0 duration-300 flex items-center gap-1.5 cursor-pointer"
                     >
-                      <Layers className="w-3.5 h-3.5" />
-                      <span>View Deep Dive</span>
+                      <Play className="w-3.5 h-3.5 fill-current" />
+                      <span>View Case Study Page</span>
                     </button>
                   </div>
                 </div>
@@ -135,11 +329,11 @@ export const ProjectsSection: React.FC = () => {
               {/* Action Buttons */}
               <div className="p-6 pt-0 flex items-center gap-3">
                 <button
-                  onClick={() => setSelectedProject(project)}
+                  onClick={() => setShowcaseProject(project)}
                   className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm cursor-pointer"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span>Live Demo</span>
+                  <Video className="w-3.5 h-3.5" />
+                  <span>View Demo & Showcase</span>
                 </button>
                 <a
                   href={project.githubUrl}
@@ -154,102 +348,6 @@ export const ProjectsSection: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Project Detail Modal */}
-        {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-            <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-[#071912] rounded-3xl p-6 sm:p-8 shadow-2xl border border-emerald-500/30">
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-stone-100 dark:bg-[#092218] text-stone-600 dark:text-stone-300 hover:bg-emerald-500 hover:text-white transition-colors cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="mb-4">
-                <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                  {selectedProject.category}
-                </span>
-                <h3 className="text-2xl font-bold text-stone-900 dark:text-white mt-2">
-                  {selectedProject.title}
-                </h3>
-              </div>
-
-              {/* Modal Image */}
-              <div className="rounded-2xl overflow-hidden aspect-16/9 bg-slate-900 mb-6">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Long Description */}
-              <p className="text-stone-700 dark:text-stone-300 text-sm leading-relaxed mb-5">
-                {selectedProject.longDescription}
-              </p>
-
-              {/* Key Features */}
-              <div className="mb-6">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Key Architecture & Features</span>
-                </h4>
-                <div className="space-y-2">
-                  {selectedProject.features.map((feat, fIdx) => (
-                    <div
-                      key={fIdx}
-                      className="flex items-start gap-2 text-xs sm:text-sm text-stone-600 dark:text-stone-300"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tech Stack */}
-              <div className="border-t border-stone-200 dark:border-emerald-500/20 pt-4 mb-6">
-                <span className="text-xs font-bold text-stone-700 dark:text-stone-300 block mb-2">
-                  Technologies Employed:
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags?.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-[#092218] text-emerald-700 dark:text-emerald-300 border border-emerald-500/25"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Modal Footer Actions */}
-              <div className="flex items-center gap-3 pt-2">
-                <a
-                  href={selectedProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-emerald-500/25 transition-colors cursor-pointer"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  <span>Open Live Application</span>
-                </a>
-                <a
-                  href={selectedProject.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-3 px-4 rounded-xl bg-stone-100 dark:bg-[#092218] hover:bg-stone-200 dark:hover:bg-[#103427] text-stone-800 dark:text-stone-200 font-semibold text-xs sm:text-sm flex items-center gap-2 transition-colors border border-stone-200 dark:border-emerald-500/25 cursor-pointer"
-                >
-                  <Github className="w-4 h-4" />
-                  <span>GitHub Repository</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

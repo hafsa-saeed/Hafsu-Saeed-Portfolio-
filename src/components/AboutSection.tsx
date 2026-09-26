@@ -72,7 +72,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               <div className="relative bg-white/95 dark:bg-[#071912] border border-emerald-500/20 dark:border-emerald-500/30 rounded-3xl p-4 sm:p-6 overflow-hidden shadow-xl backdrop-blur-md">
                 <div className="relative rounded-2xl overflow-hidden aspect-4/5 bg-emerald-950/20 mb-5">
                   <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80"
+                    src="/about-Profile-img.jpg"
                     alt="Hafsa Saeed - Computer Science Student"
                     className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
                   />

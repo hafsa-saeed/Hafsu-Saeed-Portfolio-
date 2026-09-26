@@ -9,14 +9,17 @@ export type ProjectCategory =
 export interface Project {
   id: string;
   title: string;
-  category: ProjectCategory; // Strict category type for error-free filtering
+  category: ProjectCategory;
   description: string;
   longDescription: string;
-  image: string;
+  image: string; // Featured cover photo
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
   features: string[];
+  // 👇 New Showcase Fields Added
+  videoUrl?: string; // e.g. "/videos/cognisphere-demo.mp4" ya YouTube/Loom link
+  screenshots?: string[]; // e.g. ["/projects/cognisphere-1.jpg", "/projects/cognisphere-2.jpg"]
 }
 
 export type ProjectItem = Project;
