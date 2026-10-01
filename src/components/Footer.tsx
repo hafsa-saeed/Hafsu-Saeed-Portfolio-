@@ -10,9 +10,11 @@ import {
   Sparkles,
   Coffee,
 } from "lucide-react";
-import { personalInfo } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
+import { Lock } from "lucide-react";
 
 export const Footer: React.FC = () => {
+  const { personalInfo } = usePortfolio();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -169,6 +171,15 @@ export const Footer: React.FC = () => {
               & <Coffee className="w-3.5 h-3.5 text-amber-400" /> in Mianwali,
               Pakistan.
             </span>
+            <span className="hidden sm:inline">•</span>
+            <a
+              href="/admin"
+              className="text-stone-500 hover:text-emerald-400 transition-colors inline-flex items-center gap-1"
+              title="Admin CMS Portal"
+            >
+              <Lock className="w-3 h-3" />
+              <span>Admin</span>
+            </a>
           </div>
 
           {/* Back to top button */}

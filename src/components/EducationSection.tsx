@@ -8,9 +8,10 @@ import {
   Sparkles,
   BookOpen,
 } from "lucide-react";
-import { educationList } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 
 export const EducationSection: React.FC = () => {
+  const { educationList } = usePortfolio();
   return (
     <section
       id="education"

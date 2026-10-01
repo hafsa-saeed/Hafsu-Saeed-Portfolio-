@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun, FileText, Sparkles, Download } from "lucide-react";
-import { personalInfo } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 
 interface NavbarProps {
   isDark: boolean;
@@ -13,6 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   toggleTheme,
   onOpenCVModal,
 }) => {
+  const { personalInfo } = usePortfolio();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");

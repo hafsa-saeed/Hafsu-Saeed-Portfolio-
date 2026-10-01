@@ -12,10 +12,11 @@ import {
   ZoomOut,
   ZoomIn,
 } from "lucide-react";
-import { projectsList } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 import { ProjectItem } from "../types.ts";
 
 export const ProjectsSection: React.FC = () => {
+  const { projectsList } = usePortfolio();
   const [activeFilter, setActiveFilter] = useState<string>("All");
   const [showcaseProject, setShowcaseProject] = useState<ProjectItem | null>(
     null,
@@ -76,12 +77,25 @@ export const ProjectsSection: React.FC = () => {
                 <span>Video Walkthrough Demo</span>
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden bg-black">
-                <iframe
-                  src={showcaseProject.videoUrl}
-                  title={showcaseProject.title}
-                  className="w-full h-full border-0"
-                  allowFullScreen
-                />
+                {showcaseProject.videoUrl.endsWith(".mp4") ||
+                showcaseProject.videoUrl.endsWith(".webm") ||
+                showcaseProject.videoUrl.endsWith(".mov") ||
+                showcaseProject.videoUrl.includes("/videos/") ||
+                showcaseProject.videoUrl.startsWith("blob:") ? (
+                  <video
+                    src={showcaseProject.videoUrl}
+                    controls
+                    className="w-full h-full object-contain"
+                    playsInline
+                  />
+                ) : (
+                  <iframe
+                    src={showcaseProject.videoUrl}
+                    title={showcaseProject.title}
+                    className="w-full h-full border-0"
+                    allowFullScreen
+                  />
+                )}
               </div>
             </div>
           ) : (
@@ -271,9 +285,9 @@ export const ProjectsSection: React.FC = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project, idx) => (
             <div
-              key={project.id}
+              key={`${project.id}-${idx}`}
               className="group bg-white/95 dark:bg-[#071912] border border-emerald-500/20 dark:border-emerald-500/30 rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/15 hover:border-emerald-500/50 shadow-xl backdrop-blur-md"
             >
               <div>

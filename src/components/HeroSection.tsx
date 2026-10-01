@@ -13,13 +13,14 @@ import {
   BookOpen,
   Code2,
 } from "lucide-react";
-import { personalInfo } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 
 interface HeroSectionProps {
   onOpenCVModal: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCVModal }) => {
+  const { personalInfo } = usePortfolio();
   const [titleIndex, setTitleIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);

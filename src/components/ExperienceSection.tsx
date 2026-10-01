@@ -9,9 +9,10 @@ import {
   MapPin,
   Clock,
 } from "lucide-react";
-import { experienceList } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 
 export const ExperienceSection: React.FC = () => {
+  const { experienceList } = usePortfolio();
   return (
     <section
       id="experience"

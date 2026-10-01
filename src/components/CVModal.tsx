@@ -13,11 +13,7 @@ import {
   Phone,
   User,
 } from "lucide-react";
-import {
-  personalInfo,
-  educationList,
-  experienceList,
-} from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 
 interface CVModalProps {
   isOpen: boolean;
@@ -25,6 +21,7 @@ interface CVModalProps {
 }
 
 export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
+  const { personalInfo, educationList, experienceList } = usePortfolio();
   if (!isOpen) return null;
 
   const handlePrint = () => {

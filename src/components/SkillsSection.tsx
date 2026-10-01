@@ -11,9 +11,10 @@ import {
   Terminal,
   Brain,
 } from "lucide-react";
-import { skillCategories, circularSkills } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 
 export const SkillsSection: React.FC = () => {
+  const { skillCategories, circularSkills } = usePortfolio();
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const tabIcons = [Layout, Database, Terminal, Bot, Brain];

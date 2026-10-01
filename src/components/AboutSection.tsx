@@ -13,7 +13,7 @@ import {
   Target,
   Heart,
 } from "lucide-react";
-import { personalInfo } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 
 interface AboutSectionProps {
   onOpenCVModal: () => void;
@@ -22,6 +22,7 @@ interface AboutSectionProps {
 export const AboutSection: React.FC<AboutSectionProps> = ({
   onOpenCVModal,
 }) => {
+  const { personalInfo } = usePortfolio();
   const personalDetails = [
     { label: "Full Name", value: personalInfo.name, icon: User },
     { label: "Age", value: personalInfo.age, icon: Calendar },

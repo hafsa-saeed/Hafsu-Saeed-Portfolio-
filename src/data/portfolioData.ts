@@ -588,7 +588,7 @@ export const projectsList: Project[] = [
     githubUrl: "https://github.com/hafsa-saeed/medisim3d",
   },
   {
-    id: "proj-8",
+    id: "proj-6",
     title: "Sidcup Family Golf - Animated Interactive Site",
     category: "frontend",
     description:

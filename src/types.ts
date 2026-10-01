@@ -6,8 +6,23 @@ export type ProjectCategory =
   | "big"
   | "mini";
 
+export interface ProjectMedia {
+  id: string;
+  projectId: string;
+  mediaType: "hero" | "screenshot" | "video" | "document";
+  url: string;
+  r2Key?: string;
+  fileName?: string;
+  fileSize?: number;
+  mimeType?: string;
+  displayOrder: number;
+  caption?: string;
+  createdAt?: string;
+}
+
 export interface Project {
   id: string;
+  slug?: string;
   title: string;
   category: ProjectCategory;
   description: string;
@@ -17,9 +32,13 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   features: string[];
-  // 👇 New Showcase Fields Added
-  videoUrl?: string; // e.g. "/videos/cognisphere-demo.mp4" ya YouTube/Loom link
-  screenshots?: string[]; // e.g. ["/projects/cognisphere-1.jpg", "/projects/cognisphere-2.jpg"]
+  // 👇 Showcase Fields
+  videoUrl?: string; // Direct video file (mp4/webm/mov from R2 or local) or embed link
+  screenshots?: string[]; // Multiple screenshot images
+  featured?: boolean;
+  displayOrder?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export type ProjectItem = Project;
@@ -34,6 +53,7 @@ export interface ExperienceItem {
   keyResponsibilities: string[];
   technologies: string[];
   iconName: string;
+  displayOrder?: number;
 }
 
 export interface EducationItem {
@@ -43,17 +63,27 @@ export interface EducationItem {
   year: string;
   grade: string;
   status: string;
+  semester?: string; // e.g. "6th Semester Continue"
+  cgpa?: string; // e.g. "3.71"
   highlights: string[];
+  description?: string;
+  displayOrder?: number;
+}
+
+export interface SkillItem {
+  id?: string;
+  name: string;
+  level: number;
+  icon?: string;
+  description?: string;
+  displayOrder?: number;
 }
 
 export interface SkillCategory {
+  id?: string;
   category: string;
-  skills: {
-    name: string;
-    level: number;
-    icon?: string;
-    description?: string;
-  }[];
+  skills: SkillItem[];
+  displayOrder?: number;
 }
 
 export interface CircularSkill {
@@ -81,4 +111,66 @@ export interface CredentialItem {
   skillsLearned: string[];
   category: string;
   imageThumbnail: string;
+  fileUrl?: string; // High-res document or PDF in R2
+  displayOrder?: number;
+}
+
+export interface DocumentItem {
+  id: string;
+  title: string;
+  description?: string;
+  category: "cv" | "transcript" | "certificate" | "other";
+  fileUrl: string;
+  r2Key?: string;
+  fileName?: string;
+  fileSize?: number;
+  mimeType?: string;
+  isActiveCv?: boolean;
+  updatedAt?: string;
+}
+
+export interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  isRead: boolean;
+  deliveredViaSmtp?: boolean;
+  createdAt: string;
+}
+
+export interface PersonalInfo {
+  name: string;
+  titles: string[];
+  bio: string;
+  quote: string;
+  quoteAuthor: string;
+  email: string;
+  phone1: string;
+  phone2: string;
+  location: string;
+  age: string;
+  gender: string;
+  religion: string;
+  nationality: string;
+  maritalStatus: string;
+  profileImage: string;
+  resumeUrl: string;
+  languages: { name: string; level: string }[];
+  socials: {
+    github: string;
+    linkedin: string;
+    twitter: string;
+    email: string;
+    whatsapp: string;
+    [key: string]: string;
+  };
+  stats: {
+    label: string;
+    value: string;
+    suffix: string;
+    desc: string;
+  }[];
+  goals: string[];
 }

@@ -3,20 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Hafsa Saeed | Full Stack Web Developer & Computer Science Student
-    </title>
+    <title>Hafsa Saeed - Portfolio</title>
     <meta
       name="description"
-      content="Official portfolio of Hafsa Saeed — BS Computer Science student, Full Stack Web Developer, AI tools specialist, and tech enthusiast."
+      content="Modern, highly animated personal portfolio website for Hafsa Saeed, BS Computer Science student and Full Stack Web Developer."
     />
     <meta
       property="og:title"
-      content="Hafsa Saeed | Full Stack Web Developer & Computer Science Student"
+      content="Hafsa Saeed - Portfolio"
     />
     <meta
       property="og:description"
-      content="Explore Hafsa Saeed's portfolio: projects, technical skills in React, Node, Python, credentials, and work experience."
+      content="Modern, highly animated personal portfolio website for Hafsa Saeed, BS Computer Science student and Full Stack Web Developer."
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -27,6 +25,15 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="/favicon-2.png" />
+    <script>
+      // Suppress benign iframe WebSocket HMR warnings from Vite dev client
+      window.addEventListener('unhandledrejection', function(event) {
+        var str = String(event.reason || '');
+        if (str.includes('WebSocket') || (event.reason && String(event.reason.message || '').includes('WebSocket'))) {
+          event.preventDefault();
+        }
+      });
+    </script>
   </head>
   <body
     class="bg-stone-50 text-stone-900 font-['Inter',sans-serif] antialiased selection:bg-emerald-500 selection:text-white transition-colors duration-300"

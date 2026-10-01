@@ -10,13 +10,14 @@ import {
   GraduationCap,
   Briefcase,
 } from "lucide-react";
-import { personalInfo } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 
 interface CVSectionProps {
   onOpenCVModal: () => void;
 }
 
 export const CVSection: React.FC<CVSectionProps> = ({ onOpenCVModal }) => {
+  const { personalInfo } = usePortfolio();
   const handlePrint = () => {
     window.print();
   };

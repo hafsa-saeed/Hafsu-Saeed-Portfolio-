@@ -7,10 +7,11 @@ import {
   Calendar,
   FileBadge,
 } from "lucide-react";
-import { credentialsList } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 import { CredentialItem } from "../types";
 
 export const CredentialsSection: React.FC = () => {
+  const { credentialsList } = usePortfolio();
   const [activeCert, setActiveCert] = useState<CredentialItem | null>(null);
 
   // Download Handler for Real Image/Document File
