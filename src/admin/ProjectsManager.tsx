@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FolderGit2,
   Plus,
@@ -47,6 +47,14 @@ export const ProjectsManager: React.FC = () => {
   // In-app Delete Confirmation Modal State (replaces blocked window.confirm)
   const [deleteConfirmProject, setDeleteConfirmProject] = useState<{ id: string; title: string } | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isR2Ready, setIsR2Ready] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    fetch("/api/storage/status")
+      .then((r) => r.json())
+      .then((data) => setIsR2Ready(Boolean(data.r2Configured)))
+      .catch(() => setIsR2Ready(false));
+  }, []);
 
   const handleOpenAdd = () => {
     const newId = `proj-${Date.now()}`;
@@ -679,6 +687,26 @@ export const ProjectsManager: React.FC = () => {
                         )}
                       </div>
 
+                      {/* Notice if R2 is not yet configured in Vercel */}
+                      {isR2Ready === false && (
+                        <div className="p-3.5 rounded-xl bg-amber-950/40 border border-amber-500/30 text-amber-200 text-xs space-y-1.5 animate-in fade-in">
+                          <div className="flex items-center gap-2 font-bold text-amber-300">
+                            <AlertCircle className="w-4 h-4 shrink-0 text-amber-400" />
+                            <span>Action Required: Add Cloudflare R2 Keys in Vercel Settings</span>
+                          </div>
+                          <p className="text-[11px] text-stone-300 leading-relaxed">
+                            To upload large 300MB+ videos without Vercel's 4.5MB payload limit, you must add your Cloudflare R2 credentials to Vercel:
+                            Go to <strong className="text-white">Vercel Dashboard $\rightarrow$ Settings $\rightarrow$ Environment Variables</strong> and add:
+                            <br />
+                            <code className="text-amber-300 font-mono text-[10px] bg-black/40 px-1 py-0.5 rounded">R2_ACCOUNT_ID</code>,{" "}
+                            <code className="text-amber-300 font-mono text-[10px] bg-black/40 px-1 py-0.5 rounded">R2_ACCESS_KEY_ID</code>,{" "}
+                            <code className="text-amber-300 font-mono text-[10px] bg-black/40 px-1 py-0.5 rounded">R2_SECRET_ACCESS_KEY</code>,{" "}
+                            <code className="text-amber-300 font-mono text-[10px] bg-black/40 px-1 py-0.5 rounded">R2_BUCKET_NAME</code>, and{" "}
+                            <code className="text-amber-300 font-mono text-[10px] bg-black/40 px-1 py-0.5 rounded">R2_PUBLIC_URL</code>.
+                          </p>
+                        </div>
+                      )}
+
                       {/* Direct Upload Button & Real-time Progress Bar */}
                       <div className="pt-2">
                         <label className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white text-xs font-bold shadow-md shadow-emerald-600/30 transition-all cursor-pointer">
@@ -754,6 +782,12 @@ export const ProjectsManager: React.FC = () => {
                             style={{ width: `${screenshotProgress}%` }}
                           />
                         </div>
+                      </div>
+                    )}
+
+                    {(!editingProject.screenshots || editingProject.screenshots.length === 0) && !screenshotUploading && (
+                      <div className="py-6 text-center rounded-xl border border-dashed border-emerald-500/20 text-stone-400 text-xs">
+                        No screenshots uploaded yet. Click &quot;Add Screenshots to R2&quot; above to select image files.
                       </div>
                     )}
 

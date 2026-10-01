@@ -77,7 +77,12 @@ export async function uploadToR2(
   try {
     return await uploadSingleFile(file, folder, onProgress);
   } catch (directErr: any) {
-    console.warn("[Direct R2 upload error, falling back to server-relayed upload]:", directErr);
+    console.warn("[Direct R2 upload error]:", directErr);
+    // Vercel serverless functions strictly enforce a 4.5MB payload limit.
+    // If the file is larger than 4MB, server-relayed upload will guarantee an HTTP 413.
+    if (file.size > 4 * 1024 * 1024) {
+      throw directErr;
+    }
     try {
       return await uploadViaServerRelay(file, folder, onProgress);
     } catch (relayErr: any) {
@@ -107,8 +112,14 @@ async function uploadSingleFile(
   });
 
   if (!presignRes.ok) {
-    const errText = await presignRes.text();
-    throw new Error(`Failed to initialize upload: ${errText}`);
+    let errMessage = "Failed to initialize upload";
+    try {
+      const errJson = await presignRes.json();
+      if (errJson.error) errMessage = errJson.error;
+    } catch {
+      errMessage = await presignRes.text();
+    }
+    throw new Error(errMessage);
   }
 
   const { uploadUrl, publicUrl, key, fallback } = await presignRes.json();
@@ -125,7 +136,13 @@ async function uploadSingleFile(
         mimeType: file.type,
       };
     }
-    throw new Error("No upload URL returned from server.");
+    throw new Error("Cloudflare R2 storage credentials are not configured on Vercel.");
+  }
+
+  if (uploadUrl.includes("/mock-upload") || uploadUrl.includes("/local-upload")) {
+    if (file.size > 4 * 1024 * 1024) {
+      throw new Error("Cloudflare R2 keys are not configured on Vercel. Please add R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME, and R2_PUBLIC_URL in your Vercel Project Settings.");
+    }
   }
 
   // 2. Upload file directly to R2 using XMLHttpRequest for real-time progress

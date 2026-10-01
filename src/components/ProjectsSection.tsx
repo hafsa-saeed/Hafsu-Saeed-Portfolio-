@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { usePortfolio } from "../context/PortfolioContext";
 import { ProjectItem } from "../types.ts";
+import { projectsList as initialProjects } from "../data/portfolioData";
 
 export const ProjectsSection: React.FC = () => {
   const { projectsList } = usePortfolio();
@@ -116,10 +117,12 @@ export const ProjectsSection: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {(showcaseProject.screenshots &&
-              showcaseProject.screenshots.length > 0
+              {((showcaseProject.screenshots && showcaseProject.screenshots.length > 0)
                 ? showcaseProject.screenshots
-                : [showcaseProject.image]
+                : (initialProjects.find((p) => p.id === showcaseProject.id)?.screenshots &&
+                   initialProjects.find((p) => p.id === showcaseProject.id)!.screenshots!.length > 0)
+                  ? initialProjects.find((p) => p.id === showcaseProject.id)!.screenshots!
+                  : [showcaseProject.image]
               ).map((imgUrl, idx) => {
                 const isZoomed = zoomedImageIndex === idx;
                 return (

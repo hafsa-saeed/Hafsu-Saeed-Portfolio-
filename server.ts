@@ -232,7 +232,20 @@ function getSupabaseServer() {
   return createClient(url, key);
 }
 
-function formatProjectRow(row: any) {
+function formatProjectRow(row: any, mediaList?: any[]) {
+  let screenshots: string[] = [];
+  if (Array.isArray(row.screenshots) && row.screenshots.length > 0) {
+    screenshots = row.screenshots;
+  } else if (Array.isArray(mediaList) && mediaList.length > 0) {
+    const related = mediaList
+      .filter((m: any) => m.project_id === row.id && m.media_type === "screenshot")
+      .sort((a: any, b: any) => (a.display_order ?? 0) - (b.display_order ?? 0))
+      .map((m: any) => m.url);
+    if (related.length > 0) {
+      screenshots = related;
+    }
+  }
+
   return {
     id: row.id,
     slug: row.slug || row.id,
@@ -246,7 +259,7 @@ function formatProjectRow(row: any) {
     liveUrl: row.live_url || undefined,
     githubUrl: row.github_url || undefined,
     videoUrl: row.video_url || undefined,
-    screenshots: Array.isArray(row.screenshots) ? row.screenshots : [],
+    screenshots,
     featured: Boolean(row.featured),
     displayOrder: typeof row.display_order === "number" ? row.display_order : 99,
     createdAt: row.created_at,
@@ -272,7 +285,20 @@ app.get("/api/portfolio/projects", async (req, res) => {
       return res.json({ projects: [] });
     }
 
-    return res.json({ projects: (data || []).map(formatProjectRow) });
+    // Also fetch screenshots from project_media table
+    let mediaList: any[] = [];
+    try {
+      const { data: mediaData } = await supabase
+        .from("project_media")
+        .select("*")
+        .eq("media_type", "screenshot")
+        .order("display_order", { ascending: true });
+      if (mediaData) mediaList = mediaData;
+    } catch (mErr) {
+      console.warn("[Fetch project_media notice]:", mErr);
+    }
+
+    return res.json({ projects: (data || []).map((row) => formatProjectRow(row, mediaList)) });
   } catch (err: any) {
     console.error("[Fetch projects failed]:", err);
     return res.json({ projects: [] });
@@ -287,8 +313,10 @@ app.post("/api/portfolio/projects", async (req, res) => {
     return res.status(400).json({ error: "Missing project id or title" });
   }
 
+  const screenshots: string[] = Array.isArray(project.screenshots) ? project.screenshots : [];
+
   if (!supabase) {
-    return res.json({ success: true, localOnly: true, project });
+    return res.json({ success: true, localOnly: true, project: { ...project, screenshots } });
   }
 
   try {
@@ -305,20 +333,17 @@ app.post("/api/portfolio/projects", async (req, res) => {
       live_url: project.liveUrl || null,
       github_url: project.githubUrl || null,
       video_url: project.videoUrl || null,
+      screenshots: screenshots,
       featured: Boolean(project.featured),
       display_order: typeof project.displayOrder === "number" ? project.displayOrder : 0,
       updated_at: new Date().toISOString(),
     };
 
-    if (Array.isArray(project.screenshots) && project.screenshots.length > 0) {
-      payload.screenshots = project.screenshots;
-    }
-
     // Try upserting with screenshots
     let { data, error } = await supabase.from("projects").upsert(payload, { onConflict: "id" }).select();
 
     // If screenshots column does not exist in schema, retry without it
-    if (error && (error.code === "PGRST204" || error.message.includes("screenshots"))) {
+    if (error && (error.code === "PGRST204" || error.code === "42703" || error.message.includes("screenshots"))) {
       delete payload.screenshots;
       const retry = await supabase.from("projects").upsert(payload, { onConflict: "id" }).select();
       error = retry.error;
@@ -330,8 +355,32 @@ app.post("/api/portfolio/projects", async (req, res) => {
       return res.status(500).json({ error: error.message });
     }
 
+    // Also persist screenshots in project_media table (guaranteed persistence)
+    try {
+      await supabase
+        .from("project_media")
+        .delete()
+        .eq("project_id", project.id)
+        .eq("media_type", "screenshot");
+
+      if (screenshots.length > 0) {
+        const mediaRows = screenshots.map((sUrl: string, idx: number) => ({
+          id: `media_${project.id}_s_${idx}_${Date.now()}`,
+          project_id: project.id,
+          media_type: "screenshot",
+          url: sUrl,
+          display_order: idx,
+          created_at: new Date().toISOString(),
+        }));
+
+        await supabase.from("project_media").insert(mediaRows);
+      }
+    } catch (mediaErr) {
+      console.warn("[project_media save error]:", mediaErr);
+    }
+
     console.log(`[Supabase Project Saved Successfully]: ${project.id} - ${project.title}`);
-    return res.json({ success: true, project: data?.[0] ? formatProjectRow(data[0]) : project });
+    return res.json({ success: true, project: { ...project, screenshots } });
   } catch (err: any) {
     console.error("[API Project Save Error]:", err);
     return res.status(500).json({ error: err.message });
@@ -345,6 +394,7 @@ app.delete("/api/portfolio/projects/:id", async (req, res) => {
   if (supabase) {
     try {
       await supabase.from("projects").delete().eq("id", id);
+      await supabase.from("project_media").delete().eq("project_id", id);
       console.log(`[Supabase Project Deleted]: ${id}`);
     } catch (err) {
       console.warn("[Delete project error]:", err);

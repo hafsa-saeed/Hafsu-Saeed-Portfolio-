@@ -73,25 +73,54 @@ export const portfolioService = {
           .order("display_order", { ascending: true });
 
         if (!error && data && data.length > 0) {
-          const mapped = data.map((row: any) => ({
-            id: row.id,
-            slug: row.slug || row.id,
-            title: row.title || "Untitled Project",
-            category: row.category || "fullstack",
-            description: row.description || "",
-            longDescription: row.long_description || row.description || "",
-            image: row.image || "/projects/placeholder.jpg",
-            tags: Array.isArray(row.tags) ? row.tags : [],
-            features: Array.isArray(row.features) ? row.features : [],
-            liveUrl: row.live_url || undefined,
-            githubUrl: row.github_url || undefined,
-            videoUrl: row.video_url || undefined,
-            screenshots: Array.isArray(row.screenshots) ? row.screenshots : [],
-            featured: Boolean(row.featured),
-            displayOrder: typeof row.display_order === "number" ? row.display_order : 0,
-            createdAt: row.created_at,
-            updatedAt: row.updated_at,
-          }));
+          // Also fetch screenshots from project_media
+          let mediaList: any[] = [];
+          try {
+            const { data: mediaData } = await supabase
+              .from("project_media")
+              .select("*")
+              .eq("media_type", "screenshot")
+              .order("display_order", { ascending: true });
+            if (mediaData) mediaList = mediaData;
+          } catch (mErr) {
+            console.warn("Direct project_media fetch notice:", mErr);
+          }
+
+          const mapped = data.map((row: any) => {
+            let screenshots = Array.isArray(row.screenshots) ? row.screenshots : [];
+            if (screenshots.length === 0 && mediaList.length > 0) {
+              const related = mediaList
+                .filter((m: any) => m.project_id === row.id)
+                .map((m: any) => m.url);
+              if (related.length > 0) screenshots = related;
+            }
+            if (screenshots.length === 0) {
+              const init = initialProjects.find((ip) => ip.id === row.id);
+              if (init?.screenshots && init.screenshots.length > 0) {
+                screenshots = init.screenshots;
+              }
+            }
+
+            return {
+              id: row.id,
+              slug: row.slug || row.id,
+              title: row.title || "Untitled Project",
+              category: row.category || "fullstack",
+              description: row.description || "",
+              longDescription: row.long_description || row.description || "",
+              image: row.image || "/projects/placeholder.jpg",
+              tags: Array.isArray(row.tags) ? row.tags : [],
+              features: Array.isArray(row.features) ? row.features : [],
+              liveUrl: row.live_url || undefined,
+              githubUrl: row.github_url || undefined,
+              videoUrl: row.video_url || undefined,
+              screenshots,
+              featured: Boolean(row.featured),
+              displayOrder: typeof row.display_order === "number" ? row.display_order : 0,
+              createdAt: row.created_at,
+              updatedAt: row.updated_at,
+            };
+          });
           setLocal("projects", mapped);
           return mapped;
         }
@@ -118,15 +147,21 @@ export const portfolioService = {
   },
 
   async saveProject(project: ProjectItem): Promise<ProjectItem> {
+    const screenshots = Array.isArray(project.screenshots) ? project.screenshots : [];
+    const normalizedProject: ProjectItem = {
+      ...project,
+      screenshots,
+    };
+
     // 1. Always keep local storage updated first so UI immediately reflects changes
     const current = getLocal<ProjectItem[]>("projects", initialProjects);
     const existingIndex = current.findIndex((p) => p.id === project.id);
     let updated: ProjectItem[];
     if (existingIndex >= 0) {
       updated = [...current];
-      updated[existingIndex] = project;
+      updated[existingIndex] = normalizedProject;
     } else {
-      updated = [...current, project];
+      updated = [...current, normalizedProject];
     }
     setLocal("projects", updated);
 
@@ -135,7 +170,7 @@ export const portfolioService = {
       const res = await fetch("/api/portfolio/projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(project),
+        body: JSON.stringify(normalizedProject),
       });
       if (res.ok) {
         console.log(`[Project synced to Supabase via server]: ${project.id}`);
@@ -160,14 +195,45 @@ export const portfolioService = {
           live_url: project.liveUrl || null,
           github_url: project.githubUrl || null,
           video_url: project.videoUrl || null,
+          screenshots: screenshots,
           featured: Boolean(project.featured),
           display_order: project.displayOrder ?? 0,
           updated_at: new Date().toISOString(),
         };
 
-        const { error } = await supabase
+        let { error } = await supabase
           .from("projects")
           .upsert(payload, { onConflict: "id" });
+
+        if (error && (error.code === "PGRST204" || error.code === "42703" || error.message.includes("screenshots"))) {
+          delete payload.screenshots;
+          const retry = await supabase.from("projects").upsert(payload, { onConflict: "id" });
+          error = retry.error;
+        }
+
+        // Also sync screenshots to project_media in direct client
+        try {
+          await supabase
+            .from("project_media")
+            .delete()
+            .eq("project_id", project.id)
+            .eq("media_type", "screenshot");
+
+          if (screenshots.length > 0) {
+            const mediaRows = screenshots.map((url, idx) => ({
+              id: `media_${project.id}_s_${idx}_${Date.now()}`,
+              project_id: project.id,
+              media_type: "screenshot",
+              url,
+              display_order: idx,
+              created_at: new Date().toISOString(),
+            }));
+
+            await supabase.from("project_media").insert(mediaRows);
+          }
+        } catch (mErr) {
+          console.warn("Direct project_media sync notice:", mErr);
+        }
 
         if (error) {
           console.warn("[Direct client Supabase project notice]:", error.message);
@@ -177,7 +243,7 @@ export const portfolioService = {
       }
     }
 
-    return project;
+    return normalizedProject;
   },
 
   async deleteProject(id: string): Promise<void> {
@@ -197,6 +263,7 @@ export const portfolioService = {
     if (isSupabaseConfigured && supabase) {
       try {
         const { error } = await supabase.from("projects").delete().eq("id", id);
+        await supabase.from("project_media").delete().eq("project_id", id);
         if (error) console.warn("[Supabase delete notice]:", error.message);
       } catch (err) {
         console.warn("[Supabase delete sync error]:", err);
