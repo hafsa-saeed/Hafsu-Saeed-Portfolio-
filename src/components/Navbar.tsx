@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun, Sparkles } from "lucide-react";
+import {
+  Menu,
+  X,
+  Moon,
+  Sun,
+  Sparkles,
+  FileText,
+} from "lucide-react";
 import { usePortfolio } from "../context/PortfolioContext";
 
 interface NavbarProps {
@@ -37,12 +44,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         setScrolled(false);
       }
 
-      // Detect active section
       const sections = navItems.map((item) => item.href.substring(1));
       const scrollPosition = window.scrollY + 180;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
+
         if (el && el.offsetTop <= scrollPosition) {
           setActiveSection(sections[i]);
           break;
@@ -51,6 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -72,13 +80,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="w-full h-full bg-white dark:bg-[#0a1e16] rounded-[10px] flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 text-lg">
               HS
             </div>
+
             <span className="absolute -top-1 -right-1 w-3 h-3 bg-amber-400 rounded-full border-2 border-white dark:border-[#071812] animate-pulse" />
           </div>
+
           <div>
             <div className="font-bold tracking-tight text-lg leading-tight flex items-center gap-1.5">
               <span>{personalInfo.name}</span>
               <span className="text-emerald-500 font-extrabold">.</span>
             </div>
+
             <p className="text-[11px] text-stone-500 dark:text-emerald-300/80 font-medium tracking-wide">
               BS CS • Web Dev
             </p>
@@ -88,7 +99,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Desktop Navigation */}
         <nav className="hidden xl:flex items-center gap-1 lg:gap-1.5 bg-stone-100/80 dark:bg-[#0b241b]/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-stone-200/60 dark:border-emerald-500/25 text-xs font-medium shadow-xs">
           {navItems.map((item) => {
-            const isActive = activeSection === item.href.substring(1);
+            const isActive =
+              activeSection === item.href.substring(1);
+
             return (
               <a
                 key={item.href}
@@ -100,6 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }`}
               >
                 {item.label}
+
                 {isActive && (
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-emerald-500 rounded-full" />
                 )}
@@ -108,8 +122,22 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Right Actions: Theme Toggle, CV Quick Action & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* Right Actions */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* View CV Button */}
+          <a
+            href="/Hafsa_Saeed_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View CV"
+            className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl text-stone-700 dark:text-stone-200 bg-stone-100 hover:bg-emerald-100 dark:bg-[#0b241b] dark:hover:bg-[#103427] hover:text-emerald-700 dark:hover:text-emerald-300 transition-all duration-200 border border-stone-200/80 dark:border-emerald-500/30 cursor-pointer shadow-xs"
+          >
+            <FileText className="w-4 h-4" />
+            <span className="hidden sm:inline text-xs font-semibold">
+              View CV
+            </span>
+          </a>
+
           {/* Dark/Light Toggle */}
           <button
             onClick={toggleTheme}
@@ -138,12 +166,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown / Slide-Down Drawer */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="xl:hidden bg-white/95 dark:bg-[#071812]/98 backdrop-blur-xl border-b border-emerald-500/25 shadow-2xl px-4 pt-3 pb-5 animate-in slide-in-from-top-4 duration-300">
           <div className="grid grid-cols-2 gap-2">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.substring(1);
+              const isActive =
+                activeSection === item.href.substring(1);
+
               return (
                 <a
                   key={item.href}
