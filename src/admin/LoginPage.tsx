@@ -116,7 +116,7 @@ export const LoginPage: React.FC = () => {
               </button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[11px] text-stone-400 font-mono">
-              <div>Email: <span className="text-emerald-300">hafsasaeed1074@gmail.com</span></div>
+              <div>Email: <span className="text-emerald-300">hafsasaeed192@gmail.com</span></div>
               <div>Password: <span className="text-emerald-300">Hafsa@Saeed2026</span></div>
             </div>
           </div>
@@ -132,7 +132,7 @@ export const LoginPage: React.FC = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="hafsasaeed1074@gmail.com"
+                  placeholder="hafsasaeed192@gmail.com"
                   required
                   className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#092218] border border-emerald-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
                 />
@@ -189,7 +189,7 @@ export const LoginPage: React.FC = () => {
               <p className="text-[11px] text-amber-300/90 leading-relaxed">
                 Tip: In local testing, enter Hafsa's email (e.g.{" "}
                 <code className="bg-emerald-950 px-1 py-0.5 rounded text-emerald-300">
-                  hafsasaeed1074@gmail.com
+                  hafsasaeed192@gmail.com
                 </code>
                 ) and any password to access the panel. To link to your live Supabase project,
                 add <code className="text-emerald-300">VITE_SUPABASE_URL</code> and{" "}

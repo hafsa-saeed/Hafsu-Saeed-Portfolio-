@@ -36,12 +36,11 @@ export const CredentialsSection: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <FileBadge className="w-4 h-4" />
-            <span>Verified Credentials</span>
+            <span>Honors & Certifications</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 dark:text-white tracking-tight">
-            Docs &{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">
-              Credentials
+              Achievements
             </span>
           </h2>
           <p className="text-stone-600 dark:text-stone-300 mt-2 text-sm sm:text-base">

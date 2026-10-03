@@ -16,10 +16,10 @@ import {
 import { usePortfolio } from "../context/PortfolioContext";
 
 interface HeroSectionProps {
-  onOpenCVModal: () => void;
+  onOpenCVModal?: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCVModal }) => {
+export const HeroSection: React.FC<HeroSectionProps> = () => {
   const { personalInfo } = usePortfolio();
   const [titleIndex, setTitleIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
@@ -53,11 +53,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCVModal }) => {
 
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, titleIndex, typingSpeed]);
-
-  const handleDownloadCV = () => {
-    // Triggers download or open CV modal
-    onOpenCVModal();
-  };
 
   return (
     <section
@@ -127,21 +122,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCVModal }) => {
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-4 mb-10 w-full max-w-md">
-          <button
-            onClick={onOpenCVModal}
+          <a
+            href="/Hafsa_Saeed_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex-1 min-w-[160px] py-3.5 px-6 rounded-2xl font-semibold text-sm sm:text-base text-white bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105 active:scale-98 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
           >
             <FileText className="w-4 h-4" />
             <span>View CV</span>
-          </button>
+          </a>
 
-          <button
-            onClick={handleDownloadCV}
+          <a
+            href="/Hafsa_Saeed_CV.pdf"
+            download="Hafsa_Saeed_CV.pdf"
             className="flex-1 min-w-[160px] py-3.5 px-6 rounded-2xl font-semibold text-sm sm:text-base text-emerald-800 dark:text-emerald-200 bg-white/80 dark:bg-[#0b241b]/90 hover:bg-emerald-50 dark:hover:bg-[#103427] border-2 border-emerald-500/40 hover:border-emerald-500 shadow-md shadow-emerald-500/10 hover:scale-105 active:scale-98 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
           >
             <Download className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span>Download CV</span>
-          </button>
+          </a>
         </div>
 
         {/* Social Media Icons with Bouncing Micro-interactions */}

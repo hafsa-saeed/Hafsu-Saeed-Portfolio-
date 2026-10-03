@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun, FileText, Sparkles, Download } from "lucide-react";
+import { Menu, X, Moon, Sun, Sparkles } from "lucide-react";
 import { usePortfolio } from "../context/PortfolioContext";
 
 interface NavbarProps {
   isDark: boolean;
   toggleTheme: () => void;
-  onOpenCVModal: () => void;
+  onOpenCVModal?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   isDark,
   toggleTheme,
-  onOpenCVModal,
 }) => {
   const { personalInfo } = usePortfolio();
   const [scrolled, setScrolled] = useState(false);
@@ -26,9 +25,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     { label: "Skills", href: "#skills" },
     { label: "Hobbies", href: "#hobbies" },
     { label: "Projects", href: "#projects" },
-    { label: "Docs & Credentials", href: "#credentials" },
+    { label: "Achievements", href: "#credentials" },
     { label: "Contact", href: "#contact" },
-    { label: "CV", href: "#cv" },
   ];
 
   useEffect(() => {
@@ -125,15 +123,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </button>
 
-          {/* Direct CV Button */}
-          <button
-            onClick={onOpenCVModal}
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 shadow-md shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
-          >
-            <FileText className="w-3.5 h-3.5" />
-            <span>View CV</span>
-          </button>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -151,8 +140,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Menu Dropdown / Slide-Down Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white/95 dark:bg-[#071812]/98 backdrop-blur-xl border-b border-emerald-500/25 shadow-2xl px-4 pt-3 pb-6 animate-in slide-in-from-top-4 duration-300">
-          <div className="grid grid-cols-2 gap-2 mb-4">
+        <div className="xl:hidden bg-white/95 dark:bg-[#071812]/98 backdrop-blur-xl border-b border-emerald-500/25 shadow-2xl px-4 pt-3 pb-5 animate-in slide-in-from-top-4 duration-300">
+          <div className="grid grid-cols-2 gap-2">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
               return (
@@ -170,27 +159,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </a>
               );
             })}
-          </div>
-
-          <div className="pt-2 border-t border-stone-200 dark:border-emerald-950 flex gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenCVModal();
-              }}
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors"
-            >
-              <FileText className="w-4 h-4" />
-              <span>Preview Full CV</span>
-            </button>
-            <a
-              href="#cv"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-stone-700 dark:text-stone-200 bg-stone-100 dark:bg-[#0b241b] hover:bg-stone-200 dark:hover:bg-[#103427] transition-colors border border-stone-200 dark:border-emerald-500/30"
-            >
-              <Download className="w-4 h-4 text-emerald-500" />
-              <span>CV Section</span>
-            </a>
           </div>
         </div>
       )}

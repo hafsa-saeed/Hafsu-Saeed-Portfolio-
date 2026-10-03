@@ -33,12 +33,29 @@ function sanitizeFileName(fileName: string): string {
   return fileName.toLowerCase().replace(/[^a-z0-9.-]/g, "-");
 }
 
+function isPlaceholder(val?: string): boolean {
+  if (!val) return true;
+  const lower = val.toLowerCase().trim();
+  return (
+    lower.includes("your-project") ||
+    lower.includes("your_") ||
+    lower.includes("your-") ||
+    lower.includes("example") ||
+    lower.includes("placeholder") ||
+    lower.includes("...") ||
+    lower.length < 20
+  );
+}
+
 function getSupabaseConfig() {
   const url = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
   const key =
     process.env.SUPABASE_SERVICE_ROLE_KEY ||
     process.env.VITE_SUPABASE_ANON_KEY ||
     process.env.SUPABASE_ANON_KEY;
+  if (!url || !key || isPlaceholder(url) || isPlaceholder(key)) {
+    return { url: "", key: "" };
+  }
   return { url, key };
 }
 

@@ -11,7 +11,6 @@ import { HobbiesSection } from "./HobbiesSection";
 import { ProjectsSection } from "./ProjectsSection";
 import { CredentialsSection } from "./CredentialsSection";
 import { ContactSection } from "./ContactSection";
-import { CVSection } from "./CVSection";
 import { CVModal } from "./CVModal";
 import { Footer } from "./Footer";
 
@@ -47,18 +46,17 @@ export const PublicPortfolio: React.FC = () => {
       <Navbar
         isDark={isDark}
         toggleTheme={toggleTheme}
-        onOpenCVModal={() => setIsCVModalOpen(true)}
       />
 
       <main className="relative">
         {/* Animated Particle & Leaf Floating Canvas in Hero */}
         <div className="relative">
           <ParticleBackground />
-          <HeroSection onOpenCVModal={() => setIsCVModalOpen(true)} />
+          <HeroSection />
         </div>
 
         {/* 2. About Me Section */}
-        <AboutSection onOpenCVModal={() => setIsCVModalOpen(true)} />
+        <AboutSection />
 
         {/* 3. Work Experience Section */}
         <ExperienceSection />
@@ -75,14 +73,11 @@ export const PublicPortfolio: React.FC = () => {
         {/* 7. Featured Projects Section */}
         <ProjectsSection />
 
-        {/* 8. Verified Docs & Credentials Section */}
+        {/* 8. Achievements Section */}
         <CredentialsSection />
 
         {/* 9. Contact Me Section */}
         <ContactSection />
-
-        {/* 10. CV Section with Embedded Preview */}
-        <CVSection onOpenCVModal={() => setIsCVModalOpen(true)} />
       </main>
 
       {/* 11. Footer with Back to Top */}

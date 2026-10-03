@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { User, Session } from "@supabase/supabase-js";
 import { supabase, isSupabaseConfigured } from "../lib/supabase";
 
-export const DEFAULT_ADMIN_EMAIL = "hafsasaeed1074@gmail.com";
+export const DEFAULT_ADMIN_EMAIL = "hafsasaeed192@gmail.com";
 export const DEFAULT_ADMIN_PASSWORD = "Hafsa@Saeed2026";
 
 interface AuthContextType {
@@ -139,7 +139,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setLoading(false);
         return {
           success: false,
-          error: "Invalid credentials. Use email: hafsasaeed1074@gmail.com and password: Hafsa@Saeed2026",
+          error: "Invalid credentials. Use email: hafsasaeed192@gmail.com and password: Hafsa@Saeed2026",
         };
       }
     }

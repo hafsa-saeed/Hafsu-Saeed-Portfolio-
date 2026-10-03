@@ -7,8 +7,29 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { createClient } from "@supabase/supabase-js";
 import { createServer as createViteServer } from "vite";
 import { storageController, getR2Client } from "./src/server/storageController";
+import { projectsList } from "./src/data/portfolioData";
 
 dotenv.config();
+
+function isPlaceholder(val?: string): boolean {
+  if (!val) return true;
+  const lower = val.toLowerCase().trim();
+  return (
+    lower.includes("your-project") ||
+    lower.includes("your_") ||
+    lower.includes("your-") ||
+    lower.includes("example") ||
+    lower.includes("placeholder") ||
+    lower.includes("...") ||
+    lower.length < 20
+  );
+}
+
+// In-memory fallback projects store for zero-latency responses
+let inMemoryProjects: any[] = (projectsList || []).map((p) => ({
+  ...p,
+  screenshots: Array.isArray(p.screenshots) ? p.screenshots : [],
+}));
 
 const app = express();
 const PORT = 3000;
@@ -140,7 +161,7 @@ app.get("/api/supabase/status", async (req, res) => {
     process.env.SUPABASE_ANON_KEY ||
     "";
 
-  if (!supabaseUrl || !supabaseKey) {
+  if (!supabaseUrl || !supabaseKey || isPlaceholder(supabaseUrl) || isPlaceholder(supabaseKey)) {
     return res.json({
       connected: false,
       tablesReady: false,
@@ -228,8 +249,12 @@ function getSupabaseServer() {
     process.env.SUPABASE_SERVICE_ROLE_KEY ||
     process.env.VITE_SUPABASE_ANON_KEY ||
     process.env.SUPABASE_ANON_KEY;
-  if (!url || !key) return null;
-  return createClient(url, key);
+  if (!url || !key || isPlaceholder(url) || isPlaceholder(key)) return null;
+  try {
+    return createClient(url, key);
+  } catch {
+    return null;
+  }
 }
 
 function formatProjectRow(row: any, mediaList?: any[]) {
@@ -267,41 +292,50 @@ function formatProjectRow(row: any, mediaList?: any[]) {
   };
 }
 
-// Fetch all projects directly from Supabase
+// Fetch all projects directly from Supabase (or fast in-memory store)
 app.get("/api/portfolio/projects", async (req, res) => {
   const supabase = getSupabaseServer();
   if (!supabase) {
-    return res.json({ projects: [] });
+    return res.json({ projects: inMemoryProjects });
   }
 
   try {
-    const { data, error } = await supabase
-      .from("projects")
-      .select("*")
-      .order("display_order", { ascending: true });
+    // Add timeout to prevent hanging if Supabase network is unreachable
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Supabase query timed out")), 2500)
+    );
 
-    if (error) {
-      console.warn("[Fetch projects error from Supabase]:", error);
-      return res.json({ projects: [] });
-    }
-
-    // Also fetch screenshots from project_media table
-    let mediaList: any[] = [];
-    try {
-      const { data: mediaData } = await supabase
-        .from("project_media")
+    const queryPromise = (async () => {
+      const { data, error } = await supabase
+        .from("projects")
         .select("*")
-        .eq("media_type", "screenshot")
         .order("display_order", { ascending: true });
-      if (mediaData) mediaList = mediaData;
-    } catch (mErr) {
-      console.warn("[Fetch project_media notice]:", mErr);
-    }
 
-    return res.json({ projects: (data || []).map((row) => formatProjectRow(row, mediaList)) });
+      if (error) throw error;
+
+      let mediaList: any[] = [];
+      try {
+        const { data: mediaData } = await supabase
+          .from("project_media")
+          .select("*")
+          .eq("media_type", "screenshot")
+          .order("display_order", { ascending: true });
+        if (mediaData) mediaList = mediaData;
+      } catch (mErr) {
+        console.warn("[Fetch project_media notice]:", mErr);
+      }
+
+      return (data || []).map((row) => formatProjectRow(row, mediaList));
+    })();
+
+    const projects: any = await Promise.race([queryPromise, timeoutPromise]);
+    if (Array.isArray(projects) && projects.length > 0) {
+      inMemoryProjects = projects;
+    }
+    return res.json({ projects: inMemoryProjects });
   } catch (err: any) {
-    console.error("[Fetch projects failed]:", err);
-    return res.json({ projects: [] });
+    console.warn("[Fetch projects notice, using memory fallback]:", err?.message);
+    return res.json({ projects: inMemoryProjects });
   }
 });
 
@@ -314,9 +348,18 @@ app.post("/api/portfolio/projects", async (req, res) => {
   }
 
   const screenshots: string[] = Array.isArray(project.screenshots) ? project.screenshots : [];
+  const normalizedProject = { ...project, screenshots };
+
+  // Always update in-memory cache so UI updates immediately
+  const existingIdx = inMemoryProjects.findIndex((p) => p.id === project.id);
+  if (existingIdx >= 0) {
+    inMemoryProjects[existingIdx] = normalizedProject;
+  } else {
+    inMemoryProjects.push(normalizedProject);
+  }
 
   if (!supabase) {
-    return res.json({ success: true, localOnly: true, project: { ...project, screenshots } });
+    return res.json({ success: true, localOnly: true, project: normalizedProject });
   }
 
   try {
@@ -380,7 +423,7 @@ app.post("/api/portfolio/projects", async (req, res) => {
     }
 
     console.log(`[Supabase Project Saved Successfully]: ${project.id} - ${project.title}`);
-    return res.json({ success: true, project: { ...project, screenshots } });
+    return res.json({ success: true, project: normalizedProject });
   } catch (err: any) {
     console.error("[API Project Save Error]:", err);
     return res.status(500).json({ error: err.message });
@@ -389,8 +432,10 @@ app.post("/api/portfolio/projects", async (req, res) => {
 
 // Delete a project from Supabase
 app.delete("/api/portfolio/projects/:id", async (req, res) => {
-  const supabase = getSupabaseServer();
   const { id } = req.params;
+  inMemoryProjects = inMemoryProjects.filter((p) => p.id !== id);
+
+  const supabase = getSupabaseServer();
   if (supabase) {
     try {
       await supabase.from("projects").delete().eq("id", id);
@@ -424,7 +469,7 @@ async function saveToSupabase(record: StoredMessage) {
     process.env.VITE_SUPABASE_ANON_KEY ||
     process.env.SUPABASE_ANON_KEY;
 
-  if (!supabaseUrl || !supabaseKey) return;
+  if (!supabaseUrl || !supabaseKey || isPlaceholder(supabaseUrl) || isPlaceholder(supabaseKey)) return;
 
   try {
     const res = await fetch(`${supabaseUrl}/rest/v1/contact_messages`, {
@@ -461,7 +506,7 @@ app.get("/api/health", (req, res) => {
   res.json({
     status: "ok",
     timestamp: new Date().toISOString(),
-    recipient: "hafsasaeed1074@gmail.com",
+    recipient: "hafsasaeed192@gmail.com",
     archivedCount: messageArchive.length,
   });
 });
@@ -486,9 +531,8 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
-    const targetRecipient =
-      process.env.RECIPIENT_EMAIL || "hafsasaeed1074@gmail.com";
-    const gmailUser = process.env.GMAIL_USER || "hafsasaeed1074@gmail.com";
+    const targetRecipient = "hafsasaeed192@gmail.com";
+    const gmailUser = "hafsasaeed192@gmail.com";
     const gmailPass = (
       process.env.GMAIL_APP_PASSWORD ||
       process.env.EMAIL_PASS ||
@@ -541,8 +585,15 @@ app.post("/api/contact", async (req, res) => {
       `[Contact Form Received] From: ${name} <${email}> | Subject: ${subject}`,
     );
 
-    // If a Gmail password or App Password is provided, try sending via Nodemailer
-    if (gmailPass && gmailPass.length > 5) {
+    // Check if a real, valid Google App Password is provided (not placeholder)
+    const isRealPassword =
+      Boolean(gmailPass) &&
+      gmailPass.length >= 8 &&
+      gmailPass !== "your_16_character_app_password" &&
+      !gmailPass.toLowerCase().includes("placeholder") &&
+      !gmailPass.toLowerCase().includes("your_");
+
+    if (isRealPassword) {
       try {
         const transporter = nodemailer.createTransport({
           service: "gmail",
@@ -593,36 +644,18 @@ app.post("/api/contact", async (req, res) => {
         return res.json({
           success: true,
           delivered: true,
+          provider: "Gmail-SMTP",
           message:
-            "Your message has been delivered directly to Hafsa Saeed at hafsasaeed1074@gmail.com!",
+            "Your message has been delivered directly to Hafsa Saeed at hafsasaeed192@gmail.com!",
           gmailComposeUrl,
           mailtoUrl,
           whatsappUrl,
         });
       } catch (smtpErr: any) {
         console.warn(
-          "[Gmail SMTP Notice]: Google SMTP rejected login credentials.",
+          "[Gmail SMTP failed, falling back to FormSubmit forwarder]:",
           smtpErr?.message,
         );
-
-        // Detect Google 535 Bad Credentials / App Password requirement
-        const isBadCredentials =
-          smtpErr?.code === "EAUTH" ||
-          String(smtpErr?.message || "").includes("535") ||
-          String(smtpErr?.message || "").includes("BadCredentials");
-
-        return res.json({
-          success: true,
-          delivered: false,
-          authNotice: true,
-          isBadCredentials,
-          message: isBadCredentials
-            ? "Your message was successfully logged! Note: Google requires a 16-character App Password for direct SMTP. You can also click the button below to send directly via Gmail Web."
-            : "Your message was saved! You can also click below to open in Gmail directly.",
-          gmailComposeUrl,
-          mailtoUrl,
-          whatsappUrl,
-        });
       }
     }
 
@@ -668,7 +701,7 @@ app.post("/api/contact", async (req, res) => {
           delivered: true,
           provider: "FormSubmit",
           message:
-            "Your message has been delivered directly to Hafsa Saeed at hafsasaeed1074@gmail.com!",
+            "Your message has been delivered directly to Hafsa Saeed at hafsasaeed192@gmail.com!",
           gmailComposeUrl,
           mailtoUrl,
           whatsappUrl,
@@ -683,7 +716,7 @@ app.post("/api/contact", async (req, res) => {
           delivered: false,
           needsActivation: true,
           message:
-            'Your message was logged on the server. FormSubmit sent a one-time activation email to hafsasaeed1074@gmail.com. Once activated, automated emails will deliver automatically. To send immediately right now, click "Open in Gmail Web" below!',
+            'Your message was logged on the server. FormSubmit sent a one-time activation email to hafsasaeed192@gmail.com. Once activated, automated emails will deliver automatically. To send immediately right now, click "Open in Gmail Web" below!',
           gmailComposeUrl,
           mailtoUrl,
           whatsappUrl,
