@@ -12,11 +12,11 @@ import { usePortfolio } from "../context/PortfolioContext";
 export const EducationSection: React.FC = () => {
   const { educationList } = usePortfolio();
 
-  // Public order: Matric → FSc → BS
+  // Public order: BS → FSc → Matric
   const educationOrder: Record<string, number> = {
-    matric: 0,
+    matric: 2,
     fsc: 1,
-    "bs-cs": 2,
+    "bs-cs": 0,
   };
 
   const orderedEducation = [...educationList].sort(
@@ -118,15 +118,22 @@ export const EducationSection: React.FC = () => {
 
                     {/* Highlights */}
                     <div className="space-y-1.5">
-                      {edu.highlights.map((item, hIdx) => (
-                        <div
-                          key={hIdx}
-                          className="flex items-start gap-2 text-xs text-stone-700 dark:text-stone-200 leading-relaxed"
-                        >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
+                      {edu.highlights.map((item, hIdx) => {
+                        // Remove only the first highlight from BS
+                        if (isDegree && hIdx === 0) {
+                          return null;
+                        }
+
+                        return (
+                          <div
+                            key={hIdx}
+                            className="flex items-start gap-2 text-xs text-stone-700 dark:text-stone-200 leading-relaxed"
+                          >
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </div>
+                        );
+                      })}
                     </div>
 
                     {/* Compact Status */}
@@ -136,7 +143,7 @@ export const EducationSection: React.FC = () => {
                       </span>
 
                       <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-                        {edu.status}
+                        {isDegree ? "In Progress" : edu.status}
                       </span>
                     </div>
                   </div>
