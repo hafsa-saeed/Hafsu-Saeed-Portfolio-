@@ -190,6 +190,30 @@ export const circularSkills: CircularSkill[] = [
     category: "Pandas & Data Insights",
     color: "#fbbf24",
   },
+  {
+  name: "Databases",
+  percentage: 82,
+  category: "MongoDB, Supabase & MySQL",
+  color: "#0ea5e9",
+},
+{
+  name: "Programming & OOP",
+  percentage: 84,
+  category: "C, C++, OOP & JavaScript",
+  color: "#8b5cf6",
+},
+{
+  name: "WordPress & CMS",
+  percentage: 85,
+  category: "Websites & Content Management",
+  color: "#2563eb",
+},
+{
+  name: "Git & GitHub",
+  percentage: 88,
+  category: "Version Control & Collaboration",
+  color: "#f97316",
+},
 ];
 
 export const skillCategories: SkillCategory[] = [
