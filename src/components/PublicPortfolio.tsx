@@ -7,7 +7,6 @@ import { AboutSection } from "./AboutSection";
 import { ExperienceSection } from "./ExperienceSection";
 import { EducationSection } from "./EducationSection";
 import { SkillsSection } from "./SkillsSection";
-import { HobbiesSection } from "./HobbiesSection";
 import { ProjectsSection } from "./ProjectsSection";
 import { CredentialsSection } from "./CredentialsSection";
 import { ContactSection } from "./ContactSection";
@@ -66,9 +65,6 @@ export const PublicPortfolio: React.FC = () => {
 
         {/* 5. Technical & Soft Skills Section */}
         <SkillsSection />
-
-        {/* 6. Hobbies & Passions Section */}
-        <HobbiesSection />
 
         {/* 7. Featured Projects Section */}
         <ProjectsSection />
