@@ -14,14 +14,14 @@ export const SkillsSection: React.FC = () => {
 
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-500/20 text-purple-600 dark:text-purple-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Cpu className="w-4 h-4" />
             <span>Technical Capabilities</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 dark:text-white tracking-tight">
             Skills &{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-500">
               Expertise
             </span>
           </h2>
@@ -47,8 +47,8 @@ export const SkillsSection: React.FC = () => {
                 key={`${skill.name}-${idx}`}
                 className="
                   group
-                  bg-white/95 dark:bg-[#071912]
-                  border border-emerald-500/20 dark:border-emerald-500/30
+                  bg-white/95 dark:bg-[#0e102c]
+                  border border-purple-500/20 dark:border-purple-500/30
                   rounded-3xl
                   p-5
                   flex flex-col items-center text-center
@@ -56,9 +56,9 @@ export const SkillsSection: React.FC = () => {
                   backdrop-blur-md
                   transition-all duration-300 ease-out
                   hover:-translate-y-1
-                  hover:border-emerald-500/40
+                  hover:border-purple-500/40
                   hover:shadow-xl
-                  hover:shadow-emerald-500/10
+                  hover:shadow-purple-500/10
                 "
               >
                 {/* Skill Circle */}
@@ -80,7 +80,7 @@ export const SkillsSection: React.FC = () => {
                       cx="50"
                       cy="50"
                       r={radius}
-                      className="text-stone-200 dark:text-[#0b2b20]"
+                      className="text-stone-200 dark:text-[#161a45]"
                       strokeWidth="8"
                       stroke="currentColor"
                       fill="transparent"
@@ -108,8 +108,8 @@ export const SkillsSection: React.FC = () => {
                         text-2xl font-black
                         text-stone-900 dark:text-white
                         transition-colors duration-300
-                        group-hover:text-emerald-600
-                        dark:group-hover:text-emerald-400
+                        group-hover:text-purple-600
+                        dark:group-hover:text-purple-400
                       "
                     >
                       {percentage}%
@@ -122,8 +122,8 @@ export const SkillsSection: React.FC = () => {
                   className="
                     font-bold text-sm
                     text-stone-900 dark:text-white
-                    group-hover:text-emerald-600
-                    dark:group-hover:text-emerald-400
+                    group-hover:text-purple-600
+                    dark:group-hover:text-purple-400
                     transition-colors duration-300
                   "
                 >

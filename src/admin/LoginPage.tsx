@@ -52,16 +52,16 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#040e0a] text-stone-100 flex flex-col justify-center items-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-[#070818] text-stone-100 flex flex-col justify-center items-center p-4 relative overflow-hidden">
       {/* Subtle background glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Container */}
       <div className="w-full max-w-md relative z-10">
         {/* Brand Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 p-[2px] shadow-xl shadow-emerald-500/20 mb-4">
-            <div className="w-full h-full bg-[#071912] rounded-[14px] flex items-center justify-center font-black text-2xl text-emerald-400">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 via-violet-600 to-indigo-500 p-[2px] shadow-xl shadow-purple-500/20 mb-4">
+            <div className="w-full h-full bg-[#0e102c] rounded-[14px] flex items-center justify-center font-black text-2xl text-purple-400">
               HS
             </div>
           </div>
@@ -74,17 +74,17 @@ export const LoginPage: React.FC = () => {
         </div>
 
         {/* Card */}
-        <div className="bg-[#071912] border border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
+        <div className="bg-[#0e102c] border border-purple-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
           {/* Status Indicator */}
-          <div className="mb-6 pb-4 border-b border-emerald-500/15 flex items-center justify-between text-xs">
+          <div className="mb-6 pb-4 border-b border-purple-500/15 flex items-center justify-between text-xs">
             <span className="text-stone-400 flex items-center gap-1.5">
-              <Database className="w-3.5 h-3.5 text-emerald-400" />
+              <Database className="w-3.5 h-3.5 text-purple-400" />
               <span>Authentication</span>
             </span>
             <span
               className={`px-2 py-0.5 rounded-full text-[11px] font-semibold ${
                 isConfigured
-                  ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                  ? "bg-purple-500/20 text-purple-300 border border-purple-500/30"
                   : "bg-amber-500/20 text-amber-300 border border-amber-500/30"
               }`}
             >
@@ -101,23 +101,23 @@ export const LoginPage: React.FC = () => {
           )}
 
           {/* Quick-Fill Admin Credentials Helper */}
-          <div className="mb-5 p-3.5 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-xs text-stone-300 flex flex-col gap-2">
+          <div className="mb-5 p-3.5 rounded-2xl bg-purple-950/40 border border-purple-500/30 text-xs text-stone-300 flex flex-col gap-2">
             <div className="flex items-center justify-between">
-              <span className="font-semibold text-emerald-400 flex items-center gap-1.5">
+              <span className="font-semibold text-purple-400 flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4" />
                 <span>Admin Login Access</span>
               </span>
               <button
                 type="button"
                 onClick={fillDefaultCredentials}
-                className="px-2.5 py-1 rounded-lg bg-emerald-600/40 hover:bg-emerald-600 text-emerald-200 hover:text-white font-medium text-[11px] transition-colors border border-emerald-500/40 cursor-pointer"
+                className="px-2.5 py-1 rounded-lg bg-purple-600/40 hover:bg-purple-600 text-purple-200 hover:text-white font-medium text-[11px] transition-colors border border-purple-500/40 cursor-pointer"
               >
                 Auto-Fill Credentials
               </button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[11px] text-stone-400 font-mono">
-              <div>Email: <span className="text-emerald-300">hafsasaeed192@gmail.com</span></div>
-              <div>Password: <span className="text-emerald-300">Hafsa@Saeed2026</span></div>
+              <div>Email: <span className="text-purple-300">hafsasaeed192@gmail.com</span></div>
+              <div>Password: <span className="text-purple-300">Hafsa@Saeed2026</span></div>
             </div>
           </div>
 
@@ -127,14 +127,14 @@ export const LoginPage: React.FC = () => {
                 Admin Email
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-emerald-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Mail className="w-4 h-4 text-purple-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="hafsasaeed192@gmail.com"
                   required
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#092218] border border-emerald-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#14173d] border border-purple-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-purple-400 transition-colors"
                 />
               </div>
             </div>
@@ -144,14 +144,14 @@ export const LoginPage: React.FC = () => {
                 Admin Password
               </label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-emerald-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Lock className="w-4 h-4 text-purple-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
                   required
-                  className="w-full pl-10 pr-10 py-3 rounded-xl bg-[#092218] border border-emerald-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+                  className="w-full pl-10 pr-10 py-3 rounded-xl bg-[#14173d] border border-purple-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-purple-400 transition-colors"
                 />
                 <button
                   type="button"
@@ -166,7 +166,7 @@ export const LoginPage: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full mt-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+              className="w-full mt-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-purple-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
             >
               {isLoading ? (
                 <span>Signing in...</span>
@@ -180,20 +180,20 @@ export const LoginPage: React.FC = () => {
           </form>
 
           {/* Informative Guidance */}
-          <div className="mt-6 pt-5 border-t border-emerald-500/15 text-stone-400 text-xs space-y-2">
+          <div className="mt-6 pt-5 border-t border-purple-500/15 text-stone-400 text-xs space-y-2">
             <p className="flex items-center gap-1.5 text-stone-300">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
               <span>Direct Supabase Row-Level Security Protected</span>
             </p>
             {!isConfigured && (
               <p className="text-[11px] text-amber-300/90 leading-relaxed">
                 Tip: In local testing, enter Hafsa's email (e.g.{" "}
-                <code className="bg-emerald-950 px-1 py-0.5 rounded text-emerald-300">
+                <code className="bg-purple-950 px-1 py-0.5 rounded text-purple-300">
                   hafsasaeed192@gmail.com
                 </code>
                 ) and any password to access the panel. To link to your live Supabase project,
-                add <code className="text-emerald-300">VITE_SUPABASE_URL</code> and{" "}
-                <code className="text-emerald-300">VITE_SUPABASE_ANON_KEY</code>.
+                add <code className="text-purple-300">VITE_SUPABASE_URL</code> and{" "}
+                <code className="text-purple-300">VITE_SUPABASE_ANON_KEY</code>.
               </p>
             )}
           </div>
@@ -203,7 +203,7 @@ export const LoginPage: React.FC = () => {
         <div className="text-center mt-6">
           <Link
             to="/"
-            className="text-stone-400 hover:text-emerald-400 text-xs font-semibold inline-flex items-center gap-1 transition-colors"
+            className="text-stone-400 hover:text-purple-400 text-xs font-semibold inline-flex items-center gap-1 transition-colors"
           >
             <span>← Return to Public Portfolio</span>
           </Link>

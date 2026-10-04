@@ -50,10 +50,10 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="relative z-10 bg-[#040e09] text-stone-300 border-t border-emerald-500/15">
+    <footer className="relative z-10 bg-[#050612] text-stone-300 border-t border-purple-500/15">
       
       {/* Subtle Top Accent */}
-      <div className="absolute top-0 left-0 w-28 h-px bg-gradient-to-r from-emerald-400 to-transparent" />
+      <div className="absolute top-0 left-0 w-28 h-px bg-gradient-to-r from-purple-400 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -67,13 +67,13 @@ export const Footer: React.FC = () => {
               aria-label="Back to Home"
               className="group shrink-0"
             >
-              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-emerald-500 to-teal-400 p-[2px] shadow-sm shadow-emerald-500/20 group-hover:scale-105 transition-transform duration-300">
+              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-violet-600 to-indigo-500 p-[2px] shadow-sm shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
                 
-                <div className="w-full h-full bg-[#071812] rounded-[10px] flex items-center justify-center font-bold text-emerald-400 text-base">
+                <div className="w-full h-full bg-[#0e102c] rounded-[10px] flex items-center justify-center font-bold text-purple-400 text-base">
                   HS
                 </div>
 
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-400 rounded-full border-2 border-[#040e09]" />
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-400 rounded-full border-2 border-[#050612]" />
               </div>
             </a>
 
@@ -114,7 +114,7 @@ export const Footer: React.FC = () => {
                     text-stone-500 ${item.color}
                     bg-white/[0.025]
                     border border-white/[0.06]
-                    hover:border-emerald-500/25
+                    hover:border-purple-500/25
                     hover:bg-white/[0.06]
                     hover:-translate-y-0.5
                     transition-all duration-200`}
@@ -136,12 +136,12 @@ export const Footer: React.FC = () => {
             aria-label="Back to top"
             title="Back to top"
             className="group flex items-center gap-2 px-4 py-2.5 rounded-xl
-              bg-emerald-500/[0.08]
-              border border-emerald-500/20
-              text-emerald-400
-              hover:bg-emerald-500
+              bg-purple-500/[0.08]
+              border border-purple-500/20
+              text-purple-400
+              hover:bg-purple-600
               hover:text-white
-              hover:border-emerald-400
+              hover:border-purple-400
               hover:-translate-y-0.5
               transition-all duration-200"
           >

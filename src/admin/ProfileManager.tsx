@@ -67,7 +67,7 @@ export const ProfileManager: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
-            <UserCheck className="w-7 h-7 text-emerald-400" />
+            <UserCheck className="w-7 h-7 text-purple-400" />
             <span>Profile & Personal Information</span>
           </h1>
           <p className="text-xs sm:text-sm text-stone-400 mt-1">
@@ -76,8 +76,8 @@ export const ProfileManager: React.FC = () => {
         </div>
 
         {savedSuccess && (
-          <div className="px-4 py-2 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold flex items-center gap-1.5 animate-in fade-in">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <div className="px-4 py-2 rounded-xl bg-purple-950/80 border border-purple-500/40 text-purple-300 text-xs font-bold flex items-center gap-1.5 animate-in fade-in">
+            <CheckCircle2 className="w-4 h-4 text-purple-400" />
             <span>Profile updated successfully!</span>
           </div>
         )}
@@ -85,22 +85,22 @@ export const ProfileManager: React.FC = () => {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Core Personal Identity */}
-        <div className="bg-[#071912] border border-emerald-500/25 rounded-3xl p-6 shadow-xl space-y-5">
-          <h3 className="font-bold text-white text-base pb-3 border-b border-emerald-500/15">
+        <div className="bg-[#0c0e29] border border-purple-500/25 rounded-3xl p-6 shadow-xl space-y-5">
+          <h3 className="font-bold text-white text-base pb-3 border-b border-purple-500/15">
             Identity & Bio
           </h3>
 
           <div className="flex flex-col sm:flex-row items-start gap-6">
             {/* Profile Photo */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-28 h-28 rounded-2xl overflow-hidden bg-black border-2 border-emerald-500/40 shrink-0 relative">
+              <div className="w-28 h-28 rounded-2xl overflow-hidden bg-black border-2 border-purple-500/40 shrink-0 relative">
                 <img
                   src={formData.profileImage}
                   alt={formData.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <label className="px-3 py-1.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-emerald-300 hover:text-white hover:bg-emerald-900/40 text-xs font-semibold cursor-pointer transition-colors">
+              <label className="px-3 py-1.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-purple-300 hover:text-white hover:bg-purple-900/40 text-xs font-semibold cursor-pointer transition-colors">
                 <span>{photoUploading ? "Uploading..." : "Change Photo"}</span>
                 <input
                   type="file"
@@ -124,7 +124,7 @@ export const ProfileManager: React.FC = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                   />
                 </div>
 
@@ -137,7 +137,7 @@ export const ProfileManager: React.FC = () => {
                     value={titlesString}
                     onChange={(e) => setTitlesString(e.target.value)}
                     placeholder="Full Stack Developer, BS CS Student, AI Specialist"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                   />
                 </div>
               </div>
@@ -151,7 +151,7 @@ export const ProfileManager: React.FC = () => {
                   value={formData.bio}
                   onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
                   required
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                 />
               </div>
 
@@ -164,7 +164,7 @@ export const ProfileManager: React.FC = () => {
                     type="text"
                     value={formData.quote}
                     onChange={(e) => setFormData({ ...formData, quote: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                   />
                 </div>
 
@@ -178,7 +178,7 @@ export const ProfileManager: React.FC = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, quoteAuthor: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                   />
                 </div>
               </div>
@@ -187,8 +187,8 @@ export const ProfileManager: React.FC = () => {
         </div>
 
         {/* Contact & Demographics */}
-        <div className="bg-[#071912] border border-emerald-500/25 rounded-3xl p-6 shadow-xl space-y-4">
-          <h3 className="font-bold text-white text-base pb-3 border-b border-emerald-500/15">
+        <div className="bg-[#0c0e29] border border-purple-500/25 rounded-3xl p-6 shadow-xl space-y-4">
+          <h3 className="font-bold text-white text-base pb-3 border-b border-purple-500/15">
             Contact & Details
           </h3>
 
@@ -201,7 +201,7 @@ export const ProfileManager: React.FC = () => {
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
               />
             </div>
 
@@ -213,7 +213,7 @@ export const ProfileManager: React.FC = () => {
                 type="text"
                 value={formData.phone1}
                 onChange={(e) => setFormData({ ...formData, phone1: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
               />
             </div>
 
@@ -225,7 +225,7 @@ export const ProfileManager: React.FC = () => {
                 type="text"
                 value={formData.phone2}
                 onChange={(e) => setFormData({ ...formData, phone2: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
               />
             </div>
           </div>
@@ -239,7 +239,7 @@ export const ProfileManager: React.FC = () => {
                 type="text"
                 value={formData.location}
                 onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
               />
             </div>
 
@@ -251,15 +251,15 @@ export const ProfileManager: React.FC = () => {
                 type="text"
                 value={formData.age}
                 onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
               />
             </div>
           </div>
         </div>
 
         {/* Social Accounts */}
-        <div className="bg-[#071912] border border-emerald-500/25 rounded-3xl p-6 shadow-xl space-y-4">
-          <h3 className="font-bold text-white text-base pb-3 border-b border-emerald-500/15">
+        <div className="bg-[#0c0e29] border border-purple-500/25 rounded-3xl p-6 shadow-xl space-y-4">
+          <h3 className="font-bold text-white text-base pb-3 border-b border-purple-500/15">
             Social Profiles & Links
           </h3>
 
@@ -277,7 +277,7 @@ export const ProfileManager: React.FC = () => {
                     socials: { ...formData.socials, github: e.target.value },
                   })
                 }
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
               />
             </div>
 
@@ -294,7 +294,7 @@ export const ProfileManager: React.FC = () => {
                     socials: { ...formData.socials, linkedin: e.target.value },
                   })
                 }
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
               />
             </div>
 
@@ -311,7 +311,7 @@ export const ProfileManager: React.FC = () => {
                     socials: { ...formData.socials, whatsapp: e.target.value },
                   })
                 }
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
               />
             </div>
 
@@ -328,7 +328,7 @@ export const ProfileManager: React.FC = () => {
                     socials: { ...formData.socials, twitter: e.target.value },
                   })
                 }
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
               />
             </div>
           </div>
@@ -339,7 +339,7 @@ export const ProfileManager: React.FC = () => {
           <button
             type="submit"
             disabled={isSaving}
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-500 hover:to-indigo-400 text-white font-bold text-sm shadow-lg shadow-purple-600/30 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
           >
             <CheckCircle2 className="w-4 h-4" />
             <span>{isSaving ? "Saving..." : "Save All Profile Changes"}</span>

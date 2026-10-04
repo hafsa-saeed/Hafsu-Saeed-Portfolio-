@@ -102,11 +102,11 @@ export const CursorFollower: React.FC = () => {
         ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
 
         if (isHoveringInteractive) {
-          // Interactive hover: Ring expands into an elegant emerald halo, dot stays crisp
+          // Interactive hover: Ring expands into an elegant purple halo, dot stays crisp
           ring.style.width = "44px";
           ring.style.height = "44px";
-          ring.style.borderColor = "rgba(52, 211, 153, 0.9)";
-          ring.style.boxShadow = "0 0 16px rgba(16, 185, 129, 0.45)";
+          ring.style.borderColor = "rgba(192, 132, 252, 0.9)";
+          ring.style.boxShadow = "0 0 16px rgba(168, 85, 247, 0.45)";
           ring.style.borderWidth = "2px";
           dot.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) translate(-50%, -50%) scale(1.4)`;
           dot.style.opacity = "1";
@@ -114,8 +114,8 @@ export const CursorFollower: React.FC = () => {
           // Over text: NEVER obscure text! Ring contracts lightly, center dot softens to prevent hiding letters
           ring.style.width = "28px";
           ring.style.height = "28px";
-          ring.style.borderColor = "rgba(16, 185, 129, 0.4)";
-          ring.style.boxShadow = "0 0 8px rgba(16, 185, 129, 0.2)";
+          ring.style.borderColor = "rgba(168, 85, 247, 0.4)";
+          ring.style.boxShadow = "0 0 8px rgba(168, 85, 247, 0.2)";
           ring.style.borderWidth = "1px";
           dot.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) translate(-50%, -50%) scale(0.6)`;
           dot.style.opacity = "0.35"; // Soften dot so letters shine straight through
@@ -123,8 +123,8 @@ export const CursorFollower: React.FC = () => {
           // Standard idle wandering
           ring.style.width = "34px";
           ring.style.height = "34px";
-          ring.style.borderColor = "rgba(16, 185, 129, 0.65)";
-          ring.style.boxShadow = "0 0 10px rgba(16, 185, 129, 0.25)";
+          ring.style.borderColor = "rgba(168, 85, 247, 0.65)";
+          ring.style.boxShadow = "0 0 10px rgba(168, 85, 247, 0.25)";
           ring.style.borderWidth = "1.5px";
           dot.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) translate(-50%, -50%) scale(1)`;
           dot.style.opacity = "1";
@@ -155,16 +155,16 @@ export const CursorFollower: React.FC = () => {
 
   return (
     <>
-      {/* Precision emerald jewel core dot */}
+      {/* Precision purple jewel core dot */}
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981] will-change-transform opacity-0 transition-opacity duration-150"
+        className="pointer-events-none fixed top-0 left-0 z-[9999] w-1.5 h-1.5 rounded-full bg-purple-400 shadow-[0_0_8px_#a855f7] will-change-transform opacity-0 transition-opacity duration-150"
       />
       {/* Transparent hollow luminous follower ring - strictly ZERO background fill to avoid blocking text */}
       <div
         ref={ringRef}
         style={{ backgroundColor: "transparent" }}
-        className="pointer-events-none fixed top-0 left-0 z-[9998] rounded-full border border-emerald-400/65 will-change-transform opacity-0 transition-[width,height,border-color,box-shadow,border-width] duration-200 ease-out"
+        className="pointer-events-none fixed top-0 left-0 z-[9998] rounded-full border border-purple-400/65 will-change-transform opacity-0 transition-[width,height,border-color,box-shadow,border-width] duration-200 ease-out"
       />
     </>
   );

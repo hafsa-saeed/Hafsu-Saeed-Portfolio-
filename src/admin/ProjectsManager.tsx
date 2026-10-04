@@ -259,7 +259,7 @@ export const ProjectsManager: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
-            <FolderGit2 className="w-7 h-7 text-emerald-400" />
+            <FolderGit2 className="w-7 h-7 text-purple-400" />
             <span>Project Management</span>
           </h1>
           <p className="text-xs sm:text-sm text-stone-400 mt-1">
@@ -269,7 +269,7 @@ export const ProjectsManager: React.FC = () => {
 
         <button
           onClick={handleOpenAdd}
-          className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition-all cursor-pointer"
+          className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-purple-600/30 transition-all cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Project</span>
@@ -277,23 +277,23 @@ export const ProjectsManager: React.FC = () => {
       </div>
 
       {/* Projects List Table / Cards */}
-      <div className="bg-[#071912] border border-emerald-500/20 rounded-3xl overflow-hidden shadow-xl">
-        <div className="divide-y divide-emerald-500/10">
+      <div className="bg-[#0c0e29] border border-purple-500/20 rounded-3xl overflow-hidden shadow-xl">
+        <div className="divide-y divide-purple-500/10">
           {projectsList.map((project, idx) => (
             <div
               key={`${project.id}-${idx}`}
-              className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-emerald-950/20 transition-colors"
+              className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-purple-950/20 transition-colors"
             >
               {/* Left: Thumbnail & Main Info */}
               <div className="flex items-start sm:items-center gap-4 min-w-0">
-                <div className="relative w-24 h-16 sm:w-28 sm:h-18 rounded-xl overflow-hidden bg-black shrink-0 border border-emerald-500/20">
+                <div className="relative w-24 h-16 sm:w-28 sm:h-18 rounded-xl overflow-hidden bg-black shrink-0 border border-purple-500/20">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
                   />
                   {project.videoUrl && (
-                    <div className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/80 text-[10px] text-emerald-400 font-bold flex items-center gap-0.5">
+                    <div className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/80 text-[10px] text-purple-400 font-bold flex items-center gap-0.5">
                       <Video className="w-2.5 h-2.5" />
                       <span>Video</span>
                     </div>
@@ -302,7 +302,7 @@ export const ProjectsManager: React.FC = () => {
 
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/30">
                       {project.category}
                     </span>
                     {project.featured && (
@@ -337,7 +337,7 @@ export const ProjectsManager: React.FC = () => {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-emerald-400 hover:underline flex items-center gap-1"
+                          className="text-purple-400 hover:underline flex items-center gap-1"
                         >
                           <span>Live</span>
                           <ExternalLink className="w-2.5 h-2.5" />
@@ -354,7 +354,7 @@ export const ProjectsManager: React.FC = () => {
                   onClick={() => handleMove(idx, "up")}
                   disabled={idx === 0}
                   title="Move Up"
-                  className="p-2 rounded-xl bg-[#092218] border border-emerald-500/20 text-stone-300 hover:text-white hover:border-emerald-500/50 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                  className="p-2 rounded-xl bg-[#14173d] border border-purple-500/20 text-stone-300 hover:text-white hover:border-purple-500/50 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
                 >
                   <ArrowUp className="w-4 h-4" />
                 </button>
@@ -362,14 +362,14 @@ export const ProjectsManager: React.FC = () => {
                   onClick={() => handleMove(idx, "down")}
                   disabled={idx === projectsList.length - 1}
                   title="Move Down"
-                  className="p-2 rounded-xl bg-[#092218] border border-emerald-500/20 text-stone-300 hover:text-white hover:border-emerald-500/50 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                  className="p-2 rounded-xl bg-[#14173d] border border-purple-500/20 text-stone-300 hover:text-white hover:border-purple-500/50 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
                 >
                   <ArrowDown className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => handleOpenEdit(project)}
                   title="Edit Project"
-                  className="p-2 rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-600 hover:text-white transition-colors cursor-pointer"
+                  className="p-2 rounded-xl bg-purple-600/20 border border-purple-500/30 text-purple-300 hover:bg-purple-600 hover:text-white transition-colors cursor-pointer"
                 >
                   <Edit2 className="w-4 h-4" />
                 </button>
@@ -389,9 +389,9 @@ export const ProjectsManager: React.FC = () => {
       {/* Add / Edit Project Modal */}
       {isModalOpen && editingProject && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#071912] border border-emerald-500/30 rounded-3xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in duration-200">
+          <div className="bg-[#0c0e29] border border-purple-500/30 rounded-3xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in duration-200">
             {/* Modal Header */}
-            <div className="p-6 border-b border-emerald-500/20 flex items-center justify-between">
+            <div className="p-6 border-b border-purple-500/20 flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold text-white">
                   {editingProject.id ? `Edit: ${editingProject.title || "Project"}` : "Add New Project"}
@@ -402,20 +402,20 @@ export const ProjectsManager: React.FC = () => {
               </div>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-2 rounded-xl bg-[#092218] text-stone-400 hover:text-white hover:bg-emerald-950 cursor-pointer"
+                className="p-2 rounded-xl bg-[#14173d] text-stone-400 hover:text-white hover:bg-purple-950 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Modal Tabs */}
-            <div className="px-6 pt-3 border-b border-emerald-500/15 flex gap-2">
+            <div className="px-6 pt-3 border-b border-purple-500/15 flex gap-2">
               <button
                 type="button"
                 onClick={() => setActiveTab("info")}
                 className={`px-4 py-2 text-xs font-bold rounded-t-xl transition-colors cursor-pointer ${
                   activeTab === "info"
-                    ? "bg-[#092218] text-emerald-400 border-t border-x border-emerald-500/30"
+                    ? "bg-[#14173d] text-purple-400 border-t border-x border-purple-500/30"
                     : "text-stone-400 hover:text-white"
                 }`}
               >
@@ -426,7 +426,7 @@ export const ProjectsManager: React.FC = () => {
                 onClick={() => setActiveTab("media")}
                 className={`px-4 py-2 text-xs font-bold rounded-t-xl transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === "media"
-                    ? "bg-[#092218] text-emerald-400 border-t border-x border-emerald-500/30"
+                    ? "bg-[#14173d] text-purple-400 border-t border-x border-purple-500/30"
                     : "text-stone-400 hover:text-white"
                 }`}
               >
@@ -438,7 +438,7 @@ export const ProjectsManager: React.FC = () => {
                 onClick={() => setActiveTab("features")}
                 className={`px-4 py-2 text-xs font-bold rounded-t-xl transition-colors cursor-pointer ${
                   activeTab === "features"
-                    ? "bg-[#092218] text-emerald-400 border-t border-x border-emerald-500/30"
+                    ? "bg-[#14173d] text-purple-400 border-t border-x border-purple-500/30"
                     : "text-stone-400 hover:text-white"
                 }`}
               >
@@ -464,7 +464,7 @@ export const ProjectsManager: React.FC = () => {
                         }
                         placeholder="e.g. CogniSphere - Enterprise SaaS"
                         required
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-emerald-400"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-purple-400"
                       />
                     </div>
 
@@ -480,7 +480,7 @@ export const ProjectsManager: React.FC = () => {
                             category: e.target.value as ProjectCategory,
                           })
                         }
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                       >
                         <option value="fullstack">Full Stack</option>
                         <option value="frontend">Frontend</option>
@@ -503,7 +503,7 @@ export const ProjectsManager: React.FC = () => {
                       }
                       placeholder="Brief 1-2 sentence description shown on the public project card..."
                       required
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-emerald-400"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-purple-400"
                     />
                   </div>
 
@@ -518,7 +518,7 @@ export const ProjectsManager: React.FC = () => {
                         setEditingProject({ ...editingProject, longDescription: e.target.value })
                       }
                       placeholder="Comprehensive architectural overview and problem statement..."
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-emerald-400"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-purple-400"
                     />
                   </div>
 
@@ -534,7 +534,7 @@ export const ProjectsManager: React.FC = () => {
                           setEditingProject({ ...editingProject, githubUrl: e.target.value })
                         }
                         placeholder="https://github.com/hafsa-saeed/..."
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-emerald-400"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-purple-400"
                       />
                     </div>
 
@@ -549,7 +549,7 @@ export const ProjectsManager: React.FC = () => {
                           setEditingProject({ ...editingProject, liveUrl: e.target.value })
                         }
                         placeholder="https://... or #demo"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-emerald-400"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-purple-400"
                       />
                     </div>
                   </div>
@@ -562,7 +562,7 @@ export const ProjectsManager: React.FC = () => {
                       onChange={(e) =>
                         setEditingProject({ ...editingProject, featured: e.target.checked })
                       }
-                      className="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-400 focus:ring-offset-0 bg-[#092218] border-emerald-500/30 cursor-pointer"
+                      className="w-4 h-4 rounded text-purple-500 focus:ring-purple-400 focus:ring-offset-0 bg-[#14173d] border-purple-500/30 cursor-pointer"
                     />
                     <label htmlFor="featured" className="text-xs font-semibold text-stone-300 cursor-pointer">
                       Mark as Featured Project on Public Homepage
@@ -575,13 +575,13 @@ export const ProjectsManager: React.FC = () => {
               {activeTab === "media" && (
                 <div className="space-y-6">
                   {/* Hero Cover Image */}
-                  <div className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 space-y-3">
+                  <div className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 space-y-3">
                     <label className="block text-xs font-bold text-white uppercase tracking-wider">
                       Featured Hero Cover Image
                     </label>
 
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                      <div className="w-32 h-20 rounded-xl overflow-hidden bg-black border border-emerald-500/30 shrink-0">
+                      <div className="w-32 h-20 rounded-xl overflow-hidden bg-black border border-purple-500/30 shrink-0">
                         <img
                           src={editingProject.image || "/projects/cognisphere/hero.jpg"}
                           alt="Cover preview"
@@ -597,11 +597,11 @@ export const ProjectsManager: React.FC = () => {
                             setEditingProject({ ...editingProject, image: e.target.value })
                           }
                           placeholder="/projects/... or R2 URL"
-                          className="w-full px-3 py-1.5 rounded-lg bg-[#071912] border border-emerald-500/30 text-white text-xs focus:outline-none"
+                          className="w-full px-3 py-1.5 rounded-lg bg-[#0c0e29] border border-purple-500/30 text-white text-xs focus:outline-none"
                         />
 
                         <div className="flex items-center gap-3">
-                          <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-600/30 text-emerald-300 hover:bg-emerald-600 hover:text-white border border-emerald-500/30 text-xs font-semibold transition-all cursor-pointer">
+                          <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-purple-600/30 text-purple-300 hover:bg-purple-600 hover:text-white border border-purple-500/30 text-xs font-semibold transition-all cursor-pointer">
                             <Upload className="w-3.5 h-3.5" />
                             <span>{heroUploading ? `Uploading ${heroProgress}%` : "Upload to Cloudflare R2"}</span>
                             <input
@@ -615,7 +615,7 @@ export const ProjectsManager: React.FC = () => {
                           {heroUploading && (
                             <div className="w-24 bg-stone-700 h-1.5 rounded-full overflow-hidden">
                               <div
-                                className="bg-emerald-400 h-full transition-all duration-300"
+                                className="bg-purple-400 h-full transition-all duration-300"
                                 style={{ width: `${heroProgress}%` }}
                               />
                             </div>
@@ -626,13 +626,13 @@ export const ProjectsManager: React.FC = () => {
                   </div>
 
                   {/* Project Demo Video (Cloudflare R2 Direct Multipart Upload) */}
-                  <div className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/30 space-y-3 shadow-inner">
+                  <div className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/30 space-y-3 shadow-inner">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                        <Video className="w-4 h-4 text-emerald-400" />
+                        <Video className="w-4 h-4 text-purple-400" />
                         <span>Project Demo Video (Actual 300MB+ File)</span>
                       </label>
-                      <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                      <span className="text-[10px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-full border border-purple-500/20">
                         Direct-to-R2 Multipart Resumable
                       </span>
                     </div>
@@ -643,7 +643,7 @@ export const ProjectsManager: React.FC = () => {
 
                     {/* Video Player Preview if exists */}
                     {editingProject.videoUrl && (
-                      <div className="aspect-video max-h-56 rounded-xl overflow-hidden bg-black border border-emerald-500/30 relative">
+                      <div className="aspect-video max-h-56 rounded-xl overflow-hidden bg-black border border-purple-500/30 relative">
                         {editingProject.videoUrl.endsWith(".mp4") ||
                         editingProject.videoUrl.endsWith(".webm") ||
                         editingProject.videoUrl.includes("/videos/") ||
@@ -672,7 +672,7 @@ export const ProjectsManager: React.FC = () => {
                             setEditingProject({ ...editingProject, videoUrl: e.target.value })
                           }
                           placeholder="Video URL or upload file directly below"
-                          className="flex-1 px-3 py-2 rounded-lg bg-[#071912] border border-emerald-500/30 text-white text-xs focus:outline-none"
+                          className="flex-1 px-3 py-2 rounded-lg bg-[#0c0e29] border border-purple-500/30 text-white text-xs focus:outline-none"
                         />
                         {editingProject.videoUrl && (
                           <button
@@ -709,7 +709,7 @@ export const ProjectsManager: React.FC = () => {
 
                       {/* Direct Upload Button & Real-time Progress Bar */}
                       <div className="pt-2">
-                        <label className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white text-xs font-bold shadow-md shadow-emerald-600/30 transition-all cursor-pointer">
+                        <label className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-500 hover:to-indigo-400 text-white text-xs font-bold shadow-md shadow-purple-600/30 transition-all cursor-pointer">
                           <Upload className="w-4 h-4" />
                           <span>
                             {videoUploading
@@ -729,11 +729,11 @@ export const ProjectsManager: React.FC = () => {
                           <div className="mt-3 space-y-1.5 animate-in fade-in">
                             <div className="flex justify-between text-xs text-stone-300 font-semibold">
                               <span>{videoProgressText}</span>
-                              <span className="text-emerald-400">{videoProgress}%</span>
+                              <span className="text-purple-400">{videoProgress}%</span>
                             </div>
-                            <div className="w-full bg-stone-800 h-2.5 rounded-full overflow-hidden border border-emerald-500/30">
+                            <div className="w-full bg-stone-800 h-2.5 rounded-full overflow-hidden border border-purple-500/30">
                               <div
-                                className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full transition-all duration-200"
+                                className="bg-gradient-to-r from-purple-500 to-indigo-400 h-full transition-all duration-200"
                                 style={{ width: `${videoProgress}%` }}
                               />
                             </div>
@@ -751,13 +751,13 @@ export const ProjectsManager: React.FC = () => {
                   </div>
 
                   {/* Multiple Screenshots Gallery */}
-                  <div className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 space-y-3">
+                  <div className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 space-y-3">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                        <ImageIcon className="w-4 h-4 text-emerald-400" />
+                        <ImageIcon className="w-4 h-4 text-purple-400" />
                         <span>Project Screenshots & UI Views</span>
                       </label>
-                      <label className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-600/30 text-emerald-300 hover:bg-emerald-600 hover:text-white border border-emerald-500/30 text-xs font-semibold cursor-pointer">
+                      <label className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-purple-600/30 text-purple-300 hover:bg-purple-600 hover:text-white border border-purple-500/30 text-xs font-semibold cursor-pointer">
                         <Plus className="w-3.5 h-3.5" />
                         <span>Add Screenshots to R2</span>
                         <input
@@ -778,7 +778,7 @@ export const ProjectsManager: React.FC = () => {
                         </div>
                         <div className="w-full bg-stone-800 h-2 rounded-full overflow-hidden">
                           <div
-                            className="bg-emerald-400 h-full transition-all"
+                            className="bg-purple-400 h-full transition-all"
                             style={{ width: `${screenshotProgress}%` }}
                           />
                         </div>
@@ -786,7 +786,7 @@ export const ProjectsManager: React.FC = () => {
                     )}
 
                     {(!editingProject.screenshots || editingProject.screenshots.length === 0) && !screenshotUploading && (
-                      <div className="py-6 text-center rounded-xl border border-dashed border-emerald-500/20 text-stone-400 text-xs">
+                      <div className="py-6 text-center rounded-xl border border-dashed border-purple-500/20 text-stone-400 text-xs">
                         No screenshots uploaded yet. Click &quot;Add Screenshots to R2&quot; above to select image files.
                       </div>
                     )}
@@ -795,7 +795,7 @@ export const ProjectsManager: React.FC = () => {
                       {(editingProject.screenshots || []).map((imgUrl, sIdx) => (
                         <div
                           key={sIdx}
-                          className="group relative aspect-16/10 rounded-xl overflow-hidden bg-black border border-emerald-500/20"
+                          className="group relative aspect-16/10 rounded-xl overflow-hidden bg-black border border-purple-500/20"
                         >
                           <img
                             src={imgUrl}
@@ -820,7 +820,7 @@ export const ProjectsManager: React.FC = () => {
               {activeTab === "features" && (
                 <div className="space-y-6">
                   {/* Tags */}
-                  <div className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 space-y-3">
+                  <div className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 space-y-3">
                     <label className="block text-xs font-bold text-white uppercase tracking-wider">
                       Technologies & Tech Stack Tags
                     </label>
@@ -829,7 +829,7 @@ export const ProjectsManager: React.FC = () => {
                       {(editingProject.tags || []).map((tag) => (
                         <span
                           key={tag}
-                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-500/30"
+                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-950 text-purple-300 border border-purple-500/30"
                         >
                           <span>{tag}</span>
                           <button
@@ -855,12 +855,12 @@ export const ProjectsManager: React.FC = () => {
                           }
                         }}
                         placeholder="Add technology (e.g. Next.js, Redux, PostgreSQL)..."
-                        className="flex-1 px-3 py-2 rounded-xl bg-[#071912] border border-emerald-500/30 text-white text-xs focus:outline-none"
+                        className="flex-1 px-3 py-2 rounded-xl bg-[#0c0e29] border border-purple-500/30 text-white text-xs focus:outline-none"
                       />
                       <button
                         type="button"
                         onClick={handleAddTag}
-                        className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold cursor-pointer"
+                        className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold cursor-pointer"
                       >
                         Add Tag
                       </button>
@@ -868,7 +868,7 @@ export const ProjectsManager: React.FC = () => {
                   </div>
 
                   {/* Feature Highlights */}
-                  <div className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 space-y-3">
+                  <div className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 space-y-3">
                     <label className="block text-xs font-bold text-white uppercase tracking-wider">
                       Key Technical Features & Highlights
                     </label>
@@ -877,7 +877,7 @@ export const ProjectsManager: React.FC = () => {
                       {(editingProject.features || []).map((feature, fIdx) => (
                         <div
                           key={fIdx}
-                          className="flex items-start justify-between gap-3 p-2.5 rounded-xl bg-[#071912] border border-emerald-500/15 text-xs text-stone-200"
+                          className="flex items-start justify-between gap-3 p-2.5 rounded-xl bg-[#0c0e29] border border-purple-500/15 text-xs text-stone-200"
                         >
                           <span className="flex-1">{feature}</span>
                           <button
@@ -903,12 +903,12 @@ export const ProjectsManager: React.FC = () => {
                           }
                         }}
                         placeholder="Add architectural feature bullet..."
-                        className="flex-1 px-3 py-2 rounded-xl bg-[#071912] border border-emerald-500/30 text-white text-xs focus:outline-none"
+                        className="flex-1 px-3 py-2 rounded-xl bg-[#0c0e29] border border-purple-500/30 text-white text-xs focus:outline-none"
                       />
                       <button
                         type="button"
                         onClick={handleAddFeature}
-                        className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold cursor-pointer"
+                        className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold cursor-pointer"
                       >
                         Add Bullet
                       </button>
@@ -918,17 +918,17 @@ export const ProjectsManager: React.FC = () => {
               )}
 
               {/* Modal Footer Controls */}
-              <div className="pt-4 border-t border-emerald-500/20 flex items-center justify-end gap-3">
+              <div className="pt-4 border-t border-purple-500/20 flex items-center justify-end gap-3">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-5 py-2.5 rounded-xl bg-[#092218] text-stone-300 hover:text-white border border-emerald-500/20 text-xs font-semibold cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl bg-[#14173d] text-stone-300 hover:text-white border border-purple-500/20 text-xs font-semibold cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white text-xs font-bold shadow-lg shadow-emerald-600/30 cursor-pointer flex items-center gap-2"
+                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-500 hover:to-indigo-400 text-white text-xs font-bold shadow-lg shadow-purple-600/30 cursor-pointer flex items-center gap-2"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   <span>Save Project Changes</span>
@@ -942,7 +942,7 @@ export const ProjectsManager: React.FC = () => {
       {/* In-App Delete Confirmation Modal (100% reliable inside iframes) */}
       {deleteConfirmProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="w-full max-w-md bg-[#071912] border border-rose-500/30 rounded-3xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-[#0c0e29] border border-rose-500/30 rounded-3xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
                 <Trash2 className="w-6 h-6" />
@@ -959,7 +959,7 @@ export const ProjectsManager: React.FC = () => {
               This will remove the project from Supabase PostgreSQL and your live portfolio.
             </p>
 
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-emerald-500/10">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-purple-500/10">
               <button
                 type="button"
                 onClick={() => setDeleteConfirmProject(null)}

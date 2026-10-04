@@ -195,23 +195,23 @@ export const ProjectsSection: React.FC = () => {
   ========================================================= */
   if (showcaseProject) {
     return (
-      <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-900/95 dark:bg-[#030d0a]/98 text-stone-100 backdrop-blur-xl animate-in fade-in duration-300">
+      <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-900/95 dark:bg-[#070818]/98 text-stone-100 backdrop-blur-xl animate-in fade-in duration-300">
         <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8 relative">
 
           {/* Top Bar Navigation */}
-          <div className="flex items-center justify-between border-b border-emerald-500/20 pb-6 mb-8">
+          <div className="flex items-center justify-between border-b border-purple-500/20 pb-6 mb-8">
             <button
               onClick={() => {
                 setShowcaseProject(null);
                 setZoomedImageIndex(null);
               }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white transition-all text-sm font-semibold cursor-pointer border border-emerald-500/30"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-600/20 text-purple-400 hover:bg-purple-600 hover:text-white transition-all text-sm font-semibold cursor-pointer border border-purple-500/30"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Portfolio</span>
             </button>
 
-            <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
+            <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-wider border border-purple-500/30">
               {formatCategoryLabel(showcaseProject.category)}
             </span>
           </div>
@@ -229,8 +229,8 @@ export const ProjectsSection: React.FC = () => {
 
           {/* SECTION 1: Video Walkthrough */}
           {showcaseProject.videoUrl ? (
-            <div className="mb-12 rounded-3xl overflow-hidden border border-emerald-500/30 bg-black/60 p-2 sm:p-4 shadow-2xl">
-              <div className="flex items-center gap-2 mb-3 text-emerald-400 font-semibold text-sm px-2">
+            <div className="mb-12 rounded-3xl overflow-hidden border border-purple-500/30 bg-black/60 p-2 sm:p-4 shadow-2xl">
+              <div className="flex items-center gap-2 mb-3 text-purple-400 font-semibold text-sm px-2">
                 <Video className="w-4 h-4" />
                 <span>Video Walkthrough Demo</span>
               </div>
@@ -258,8 +258,8 @@ export const ProjectsSection: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div className="mb-12 p-6 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 flex items-center gap-3 text-emerald-300 text-sm">
-              <Video className="w-5 h-5 shrink-0 text-emerald-400" />
+            <div className="mb-12 p-6 rounded-2xl bg-purple-950/30 border border-purple-500/20 flex items-center gap-3 text-purple-300 text-sm">
+              <Video className="w-5 h-5 shrink-0 text-purple-400" />
 
               <span>
                 Video walkthrough for this project is recorded locally.
@@ -270,7 +270,7 @@ export const ProjectsSection: React.FC = () => {
 
           {/* SECTION 2: Image Gallery Grid */}
           <div className="mb-12">
-            <div className="flex items-center gap-2 mb-6 text-emerald-400 font-semibold text-base">
+            <div className="flex items-center gap-2 mb-6 text-purple-400 font-semibold text-base">
               <ImageIcon className="w-5 h-5" />
               <span>Project Interface Screenshots & UI Views</span>
             </div>
@@ -303,8 +303,8 @@ export const ProjectsSection: React.FC = () => {
                     }
                     className={`group relative aspect-16/10 rounded-2xl overflow-hidden border bg-stone-950 cursor-pointer transition-all duration-300 ${
                       isZoomed
-                        ? "z-30 scale-125 -translate-y-2 border-emerald-400 shadow-2xl shadow-emerald-500/20"
-                        : "z-10 border-emerald-500/20 hover:border-emerald-500 hover:shadow-lg"
+                        ? "z-30 scale-125 -translate-y-2 border-purple-400 shadow-2xl shadow-purple-500/20"
+                        : "z-10 border-purple-500/20 hover:border-purple-500 hover:shadow-lg"
                     }`}
                   >
                     <img
@@ -315,7 +315,7 @@ export const ProjectsSection: React.FC = () => {
 
                     {/* Floating Zoom Action Badge */}
                     <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <span className="p-1.5 rounded-lg bg-black/80 text-emerald-400 text-xs font-semibold flex items-center gap-1 backdrop-blur-md border border-emerald-500/30">
+                      <span className="p-1.5 rounded-lg bg-black/80 text-purple-400 text-xs font-semibold flex items-center gap-1 backdrop-blur-md border border-purple-500/30">
                         {isZoomed ? (
                           <>
                             <ZoomOut className="w-3.5 h-3.5" />
@@ -336,7 +336,7 @@ export const ProjectsSection: React.FC = () => {
           </div>
 
           {/* SECTION 3: Deep Dive Details */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 border-t border-emerald-500/20 pt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 border-t border-purple-500/20 pt-8">
             <div className="lg:col-span-2 space-y-6">
 
               <div>
@@ -350,7 +350,7 @@ export const ProjectsSection: React.FC = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold text-emerald-400 mb-3 flex items-center gap-2">
+                <h3 className="text-lg font-bold text-purple-400 mb-3 flex items-center gap-2">
                   <Sparkles className="w-4 h-4" />
                   <span>Key Architecture & Features</span>
                 </h3>
@@ -361,7 +361,7 @@ export const ProjectsSection: React.FC = () => {
                       key={fIdx}
                       className="flex items-start gap-2.5 text-sm text-stone-300"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -370,7 +370,7 @@ export const ProjectsSection: React.FC = () => {
             </div>
 
             {/* Tech Stack & Links Sidebar */}
-            <div className="bg-[#071912] p-6 rounded-2xl border border-emerald-500/30 h-fit space-y-6">
+            <div className="bg-[#0e102c] p-6 rounded-2xl border border-purple-500/30 h-fit space-y-6">
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-stone-400 block mb-3">
@@ -381,7 +381,7 @@ export const ProjectsSection: React.FC = () => {
                   {showcaseProject.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-500/30"
+                      className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-950 text-purple-300 border border-purple-500/30"
                     >
                       {tag}
                     </span>
@@ -389,7 +389,7 @@ export const ProjectsSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="space-y-3 border-t border-emerald-500/20 pt-4">
+              <div className="space-y-3 border-t border-purple-500/20 pt-4">
 
                 {showcaseProject.liveUrl &&
                   showcaseProject.liveUrl !== "#demo" && (
@@ -397,7 +397,7 @@ export const ProjectsSection: React.FC = () => {
                       href={showcaseProject.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
+                      className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-500/20 transition-all cursor-pointer"
                     >
                       <ExternalLink className="w-4 h-4" />
                       <span>Launch Live Application</span>
@@ -429,21 +429,21 @@ export const ProjectsSection: React.FC = () => {
   return (
     <section
       id="projects"
-      className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative z-10 bg-stone-100/50 dark:bg-[#05130e]/70"
+      className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative z-10 bg-stone-100/50 dark:bg-[#0a0c24]/70"
     >
       <div className="max-w-7xl mx-auto">
 
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
 
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-500/20 text-purple-600 dark:text-purple-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <FolderGit2 className="w-4 h-4" />
             <span>Featured Portfolio</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 dark:text-white tracking-tight">
             Featured{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-500">
               Projects
             </span>
           </h2>
@@ -464,8 +464,8 @@ export const ProjectsSection: React.FC = () => {
               onClick={() => setActiveFilter(btn.id)}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                 activeFilter === btn.id
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-500/30 scale-105"
-                  : "bg-white dark:bg-[#071912] text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-[#0f3424] border border-stone-200 dark:border-emerald-500/25"
+                  ? "bg-purple-600 text-white shadow-md shadow-purple-500/30 scale-105"
+                  : "bg-white dark:bg-[#0e102c] text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-[#161a45] border border-stone-200 dark:border-purple-500/25"
               }`}
             >
               {btn.label}
@@ -483,7 +483,7 @@ export const ProjectsSection: React.FC = () => {
               {filteredProjects.map((project) => (
                 <div
                   key={`mobile-${project.id}`}
-                  className="group bg-white/95 dark:bg-[#071912] border border-emerald-500/20 dark:border-emerald-500/30 rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl backdrop-blur-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-emerald-500/15 hover:border-emerald-500/50"
+                  className="group bg-white/95 dark:bg-[#0e102c] border border-purple-500/20 dark:border-purple-500/30 rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl backdrop-blur-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-purple-500/15 hover:border-purple-500/50"
                 >
                   <div>
                     {/* Thumbnail Container */}
@@ -497,15 +497,15 @@ export const ProjectsSection: React.FC = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
                       {/* Category Pill */}
-                      <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-600/95 text-white text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
+                      <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-purple-600/95 text-white text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
                         {formatCategoryLabel(project.category)}
                       </span>
 
                       {/* Quick Inspect Button Overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-emerald-950/40 backdrop-blur-[2px]">
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-purple-950/40 backdrop-blur-[2px]">
                         <button
                           onClick={() => setShowcaseProject(project)}
-                          className="px-4 py-2 rounded-xl bg-white text-stone-900 font-bold text-xs shadow-lg hover:bg-emerald-500 hover:text-white transition-all transform translate-y-2 group-hover:translate-y-0 duration-300 flex items-center gap-1.5 cursor-pointer"
+                          className="px-4 py-2 rounded-xl bg-white text-stone-900 font-bold text-xs shadow-lg hover:bg-purple-500 hover:text-white transition-all transform translate-y-2 group-hover:translate-y-0 duration-300 flex items-center gap-1.5 cursor-pointer"
                         >
                           <Play className="w-3.5 h-3.5 fill-current" />
                           <span>View Case Study Page</span>
@@ -515,7 +515,7 @@ export const ProjectsSection: React.FC = () => {
 
                     {/* Content */}
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-stone-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-2">
+                      <h3 className="text-xl font-bold text-stone-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors mb-2">
                         {project.title}
                       </h3>
 
@@ -528,7 +528,7 @@ export const ProjectsSection: React.FC = () => {
                         {project.tags.map((tag, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-emerald-50 dark:bg-[#092218] text-emerald-700 dark:text-emerald-300 border border-emerald-500/20"
+                            className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-purple-50 dark:bg-[#14173d] text-purple-700 dark:text-purple-300 border border-purple-500/20"
                           >
                             {tag}
                           </span>
@@ -541,7 +541,7 @@ export const ProjectsSection: React.FC = () => {
                   <div className="p-6 pt-0 flex items-center gap-3">
                     <button
                       onClick={() => setShowcaseProject(project)}
-                      className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm cursor-pointer"
+                      className="flex-1 py-2.5 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm cursor-pointer"
                     >
                       <Video className="w-3.5 h-3.5" />
                       <span>View Demo & Showcase</span>
@@ -551,7 +551,7 @@ export const ProjectsSection: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="py-2.5 px-3 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-[#092218] dark:hover:bg-[#103427] text-stone-800 dark:text-stone-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors border border-stone-200/80 dark:border-emerald-500/25 cursor-pointer"
+                      className="py-2.5 px-3 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-[#14173d] dark:hover:bg-[#1c2156] text-stone-800 dark:text-stone-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors border border-stone-200/80 dark:border-purple-500/25 cursor-pointer"
                     >
                       <Github className="w-3.5 h-3.5" />
                       <span>Code</span>
@@ -568,10 +568,10 @@ export const ProjectsSection: React.FC = () => {
               onMouseLeave={() => setIsHovered(false)}
             >
               {/* Left Fade */}
-              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 z-10 bg-gradient-to-r from-stone-100/90 dark:from-[#05130e]/90 to-transparent" />
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 z-10 bg-gradient-to-r from-stone-100/90 dark:from-[#0a0c24]/90 to-transparent" />
 
               {/* Right Fade */}
-              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 z-10 bg-gradient-to-l from-stone-100/90 dark:from-[#05130e]/90 to-transparent" />
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 z-10 bg-gradient-to-l from-stone-100/90 dark:from-[#0a0c24]/90 to-transparent" />
 
               <div
                 ref={trackRef}
@@ -580,7 +580,7 @@ export const ProjectsSection: React.FC = () => {
                 {duplicatedProjects.map((project, idx) => (
                   <div
                     key={`${project.id}-${idx}`}
-                    className="group flex-none sm:w-[calc((100vw-3rem)/2)] lg:w-[calc((min(1280px,100vw)-4rem)/3)] max-w-[390px] bg-white/95 dark:bg-[#071912] border border-emerald-500/20 dark:border-emerald-500/30 rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl backdrop-blur-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-emerald-500/15 hover:border-emerald-500/50"
+                    className="group flex-none sm:w-[calc((100vw-3rem)/2)] lg:w-[calc((min(1280px,100vw)-4rem)/3)] max-w-[390px] bg-white/95 dark:bg-[#0e102c] border border-purple-500/20 dark:border-purple-500/30 rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl backdrop-blur-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-purple-500/15 hover:border-purple-500/50"
                   >
                     <div>
                       {/* Thumbnail Container */}
@@ -594,15 +594,15 @@ export const ProjectsSection: React.FC = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
                         {/* Category Pill */}
-                        <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-emerald-600/95 text-white text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
+                        <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-purple-600/95 text-white text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
                           {formatCategoryLabel(project.category)}
                         </span>
 
                         {/* Quick Inspect Button Overlay */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-emerald-950/40 backdrop-blur-[2px]">
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-purple-950/40 backdrop-blur-[2px]">
                           <button
                             onClick={() => setShowcaseProject(project)}
-                            className="px-4 py-2 rounded-xl bg-white text-stone-900 font-bold text-xs shadow-lg hover:bg-emerald-500 hover:text-white transition-all transform translate-y-2 group-hover:translate-y-0 duration-300 flex items-center gap-1.5 cursor-pointer"
+                            className="px-4 py-2 rounded-xl bg-white text-stone-900 font-bold text-xs shadow-lg hover:bg-purple-500 hover:text-white transition-all transform translate-y-2 group-hover:translate-y-0 duration-300 flex items-center gap-1.5 cursor-pointer"
                           >
                             <Play className="w-3.5 h-3.5 fill-current" />
                             <span>View Case Study Page</span>
@@ -612,7 +612,7 @@ export const ProjectsSection: React.FC = () => {
 
                       {/* Content */}
                       <div className="p-6">
-                        <h3 className="text-xl font-bold text-stone-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-2">
+                        <h3 className="text-xl font-bold text-stone-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors mb-2">
                           {project.title}
                         </h3>
 
@@ -625,7 +625,7 @@ export const ProjectsSection: React.FC = () => {
                           {project.tags.map((tag, tIdx) => (
                             <span
                               key={tIdx}
-                              className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-emerald-50 dark:bg-[#092218] text-emerald-700 dark:text-emerald-300 border border-emerald-500/20"
+                              className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-purple-50 dark:bg-[#14173d] text-purple-700 dark:text-purple-300 border border-purple-500/20"
                             >
                               {tag}
                             </span>
@@ -638,7 +638,7 @@ export const ProjectsSection: React.FC = () => {
                     <div className="p-6 pt-0 flex items-center gap-3">
                       <button
                         onClick={() => setShowcaseProject(project)}
-                        className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm cursor-pointer"
+                        className="flex-1 py-2.5 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm cursor-pointer"
                       >
                         <Video className="w-3.5 h-3.5" />
                         <span>View Demo & Showcase</span>
@@ -648,7 +648,7 @@ export const ProjectsSection: React.FC = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="py-2.5 px-3 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-[#092218] dark:hover:bg-[#103427] text-stone-800 dark:text-stone-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors border border-stone-200/80 dark:border-emerald-500/25 cursor-pointer"
+                        className="py-2.5 px-3 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-[#14173d] dark:hover:bg-[#1c2156] text-stone-800 dark:text-stone-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors border border-stone-200/80 dark:border-purple-500/25 cursor-pointer"
                       >
                         <Github className="w-3.5 h-3.5" />
                         <span>Code</span>
@@ -664,7 +664,7 @@ export const ProjectsSection: React.FC = () => {
         {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-16">
-            <FolderGit2 className="w-10 h-10 mx-auto text-emerald-500/50 mb-3" />
+            <FolderGit2 className="w-10 h-10 mx-auto text-purple-500/50 mb-3" />
 
             <p className="text-stone-500 dark:text-stone-400 text-sm">
               No projects available in this category yet.

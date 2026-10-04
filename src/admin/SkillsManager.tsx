@@ -158,7 +158,7 @@ export const SkillsManager: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
-            <Wrench className="w-7 h-7 text-emerald-400" />
+            <Wrench className="w-7 h-7 text-purple-400" />
             <span>Skills & Tech Stack Management</span>
           </h1>
           <p className="text-xs sm:text-sm text-stone-400 mt-1">
@@ -168,7 +168,7 @@ export const SkillsManager: React.FC = () => {
 
         <button
           onClick={handleOpenAddCategory}
-          className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition-all cursor-pointer"
+          className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-purple-600/30 transition-all cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Add Skill Category</span>
@@ -180,14 +180,14 @@ export const SkillsManager: React.FC = () => {
         {categories.map((cat, catIdx) => (
           <div
             key={cat.id || catIdx}
-            className="bg-[#071912] border border-emerald-500/25 rounded-3xl p-6 shadow-xl space-y-4"
+            className="bg-[#0c0e29] border border-purple-500/25 rounded-3xl p-6 shadow-xl space-y-4"
           >
             {/* Category Header */}
-            <div className="flex items-center justify-between pb-3 border-b border-emerald-500/15">
+            <div className="flex items-center justify-between pb-3 border-b border-purple-500/15">
               <div>
                 <h3 className="font-extrabold text-lg text-white flex items-center gap-2">
                   <span>{cat.category}</span>
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300">
                     {cat.skills?.length || 0} skills
                   </span>
                 </h3>
@@ -196,7 +196,7 @@ export const SkillsManager: React.FC = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => handleOpenAddSkill(catIdx)}
-                  className="px-3 py-1.5 rounded-lg bg-emerald-600/20 text-emerald-300 hover:bg-emerald-600 hover:text-white text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-purple-600/20 text-purple-300 hover:bg-purple-600 hover:text-white text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add Skill</span>
@@ -215,20 +215,20 @@ export const SkillsManager: React.FC = () => {
               {cat.skills?.map((skill, sIdx) => (
                 <div
                   key={skill.id || sIdx}
-                  className="p-3.5 rounded-2xl bg-[#092218] border border-emerald-500/15 flex flex-col justify-between hover:border-emerald-500/40 transition-colors"
+                  className="p-3.5 rounded-2xl bg-[#14173d] border border-purple-500/15 flex flex-col justify-between hover:border-purple-500/40 transition-colors"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="font-bold text-sm text-white">{skill.name}</span>
-                      <span className="text-xs font-mono font-bold text-emerald-400">
+                      <span className="text-xs font-mono font-bold text-purple-400">
                         {skill.level}%
                       </span>
                     </div>
 
                     {/* Progress Bar */}
-                    <div className="w-full bg-[#071912] h-2 rounded-full overflow-hidden mb-2">
+                    <div className="w-full bg-[#0c0e29] h-2 rounded-full overflow-hidden mb-2">
                       <div
-                        className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full"
+                        className="bg-gradient-to-r from-purple-500 to-indigo-400 h-full rounded-full"
                         style={{ width: `${skill.level}%` }}
                       />
                     </div>
@@ -240,10 +240,10 @@ export const SkillsManager: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="mt-3 pt-2 border-t border-emerald-500/10 flex items-center justify-end gap-1.5">
+                  <div className="mt-3 pt-2 border-t border-purple-500/10 flex items-center justify-end gap-1.5">
                     <button
                       onClick={() => handleOpenEditSkill(catIdx, sIdx, skill)}
-                      className="p-1 rounded text-stone-400 hover:text-emerald-400 cursor-pointer"
+                      className="p-1 rounded text-stone-400 hover:text-purple-400 cursor-pointer"
                     >
                       <Edit2 className="w-3.5 h-3.5" />
                     </button>
@@ -264,7 +264,7 @@ export const SkillsManager: React.FC = () => {
       {/* Category Modal */}
       {isCatModalOpen && editingCategory && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#071912] border border-emerald-500/30 rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl">
+          <div className="bg-[#0c0e29] border border-purple-500/30 rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl">
             <h3 className="font-bold text-white text-base">Add / Edit Skill Category</h3>
             <form onSubmit={handleSaveCategory} className="space-y-4">
               <div>
@@ -279,7 +279,7 @@ export const SkillsManager: React.FC = () => {
                   }
                   placeholder="e.g. Cloud & DevOps, Mobile Apps"
                   required
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                 />
               </div>
 
@@ -287,13 +287,13 @@ export const SkillsManager: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsCatModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-[#092218] text-stone-300 text-xs font-semibold cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-[#14173d] text-stone-300 text-xs font-semibold cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold cursor-pointer"
+                  className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold cursor-pointer"
                 >
                   Save Category
                 </button>
@@ -306,7 +306,7 @@ export const SkillsManager: React.FC = () => {
       {/* Skill Modal */}
       {isSkillModalOpen && editingSkill && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#071912] border border-emerald-500/30 rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl">
+          <div className="bg-[#0c0e29] border border-purple-500/30 rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl">
             <h3 className="font-bold text-white text-base">
               {editingSkill.skillIndex >= 0 ? "Edit Skill" : "Add Skill"}
             </h3>
@@ -326,7 +326,7 @@ export const SkillsManager: React.FC = () => {
                   }
                   placeholder="e.g. Docker, TypeScript, Next.js"
                   required
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                 />
               </div>
 
@@ -350,7 +350,7 @@ export const SkillsManager: React.FC = () => {
                       },
                     })
                   }
-                  className="w-full accent-emerald-500 cursor-pointer"
+                  className="w-full accent-purple-500 cursor-pointer"
                 />
               </div>
 
@@ -368,7 +368,7 @@ export const SkillsManager: React.FC = () => {
                     })
                   }
                   placeholder="e.g. Hooks, modular state management"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                 />
               </div>
 
@@ -376,13 +376,13 @@ export const SkillsManager: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsSkillModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-[#092218] text-stone-300 text-xs font-semibold cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-[#14173d] text-stone-300 text-xs font-semibold cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold cursor-pointer"
+                  className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold cursor-pointer"
                 >
                   Save Skill
                 </button>
@@ -395,7 +395,7 @@ export const SkillsManager: React.FC = () => {
       {/* In-App Delete Confirmation Modal */}
       {deleteConfirmItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="w-full max-w-md bg-[#071912] border border-rose-500/30 rounded-3xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-[#0c0e29] border border-rose-500/30 rounded-3xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
                 <Trash2 className="w-6 h-6" />
@@ -414,7 +414,7 @@ export const SkillsManager: React.FC = () => {
               {deleteConfirmItem.type === "category" && " and all its associated skills"}?
             </p>
 
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-emerald-500/10">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-purple-500/10">
               <button
                 type="button"
                 onClick={() => setDeleteConfirmItem(null)}

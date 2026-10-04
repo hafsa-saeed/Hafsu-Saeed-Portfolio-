@@ -37,14 +37,14 @@ export const ParticleBackground: React.FC = () => {
 
     window.addEventListener("resize", handleResize);
 
-    // Green color palette
+    // Purple / violet color palette
     const colors = [
-      "#10b981",
-      "#059669",
-      "#34d399",
-      "#6ee7b7",
-      "#14b8a6",
-      "#047857",
+      "#8b5cf6",
+      "#7c3aed",
+      "#a855f7",
+      "#c084fc",
+      "#6366f1",
+      "#9333ea",
     ];
 
     const particleCount = Math.min(

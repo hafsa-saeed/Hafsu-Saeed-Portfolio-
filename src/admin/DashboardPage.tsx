@@ -127,7 +127,7 @@ export const DashboardPage: React.FC = () => {
       desc: "Live with hero, screenshots & demo videos",
       icon: FolderGit2,
       to: "/admin/projects",
-      color: "from-emerald-600 to-teal-600",
+      color: "from-purple-600 to-indigo-600",
     },
     {
       title: "Credentials & Docs",
@@ -135,7 +135,7 @@ export const DashboardPage: React.FC = () => {
       desc: "DigiSkills & academic distinctions",
       icon: Award,
       to: "/admin/credentials",
-      color: "from-teal-600 to-emerald-700",
+      color: "from-indigo-600 to-purple-700",
     },
     {
       title: "Education Milestones",
@@ -143,7 +143,7 @@ export const DashboardPage: React.FC = () => {
       desc: `Active: ${educationList[0]?.semester || "6th Semester"}`,
       icon: GraduationCap,
       to: "/admin/education",
-      color: "from-emerald-700 to-green-700",
+      color: "from-purple-700 to-violet-800",
     },
     {
       title: "Work Experience",
@@ -151,7 +151,7 @@ export const DashboardPage: React.FC = () => {
       desc: "STS Networking & Teaching records",
       icon: Briefcase,
       to: "/admin/experience",
-      color: "from-emerald-800 to-teal-800",
+      color: "from-indigo-700 to-purple-800",
     },
     {
       title: "Technical Skills",
@@ -159,7 +159,7 @@ export const DashboardPage: React.FC = () => {
       desc: `${skillCategories.length} Categories organized`,
       icon: Wrench,
       to: "/admin/skills",
-      color: "from-teal-700 to-emerald-600",
+      color: "from-violet-700 to-purple-600",
     },
     {
       title: "Inquiries Received",
@@ -167,19 +167,19 @@ export const DashboardPage: React.FC = () => {
       desc: `${unreadMessages} unread message${unreadMessages === 1 ? "" : "s"}`,
       icon: Mail,
       to: "/admin/messages",
-      color: "from-emerald-600 to-cyan-700",
+      color: "from-purple-600 to-indigo-700",
     },
   ];
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Top Welcome Banner */}
-      <div className="bg-gradient-to-r from-emerald-950/70 via-[#071912] to-[#092218] border border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-radial from-emerald-500/10 to-transparent pointer-events-none" />
+      <div className="bg-gradient-to-r from-purple-950/70 via-[#0c0e29] to-[#121544] border border-purple-500/30 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-radial from-purple-500/10 to-transparent pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-semibold uppercase tracking-wider mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Full Portfolio CMS Active</span>
             </div>
@@ -194,7 +194,7 @@ export const DashboardPage: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               to="/admin/projects"
-              className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-emerald-600/30 flex items-center gap-2 transition-all cursor-pointer"
+              className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-purple-600/30 flex items-center gap-2 transition-all cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span>Add New Project</span>
@@ -204,10 +204,10 @@ export const DashboardPage: React.FC = () => {
               href="/"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-[#0a281c] hover:bg-[#0e3525] text-stone-200 border border-emerald-500/30 font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all"
+              className="px-4 py-2.5 rounded-xl bg-[#14173d] hover:bg-[#1a1e4d] text-stone-200 border border-purple-500/30 font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all"
             >
               <span>View Live Site</span>
-              <ExternalLink className="w-4 h-4 text-emerald-400" />
+              <ExternalLink className="w-4 h-4 text-purple-400" />
             </a>
           </div>
         </div>
@@ -218,12 +218,12 @@ export const DashboardPage: React.FC = () => {
         <div
           className={`p-4 rounded-2xl border text-xs sm:text-sm flex items-start gap-3 animate-in fade-in ${
             syncStatus.success
-              ? "bg-emerald-950/60 border-emerald-500/40 text-emerald-200"
+              ? "bg-purple-950/60 border-purple-500/40 text-purple-200"
               : "bg-rose-950/60 border-rose-500/40 text-rose-200"
           }`}
         >
           {syncStatus.success ? (
-            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+            <CheckCircle2 className="w-5 h-5 text-purple-400 shrink-0" />
           ) : (
             <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0" />
           )}
@@ -237,10 +237,10 @@ export const DashboardPage: React.FC = () => {
       {/* Architecture & Infrastructure Status */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Supabase Status Card */}
-        <div className="bg-[#071912] border border-emerald-500/25 rounded-3xl p-6 shadow-lg backdrop-blur-md">
+        <div className="bg-[#0c0e29] border border-purple-500/25 rounded-3xl p-6 shadow-lg backdrop-blur-md">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <div className="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400">
                 <Database className="w-5 h-5" />
               </div>
               <div>
@@ -252,7 +252,7 @@ export const DashboardPage: React.FC = () => {
               <span
                 className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${
                   isConfigured
-                    ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
+                    ? "bg-purple-500/20 text-purple-300 border-purple-500/40"
                     : "bg-amber-500/20 text-amber-300 border-amber-500/40"
                 }`}
               >
@@ -262,7 +262,7 @@ export const DashboardPage: React.FC = () => {
                 <span
                   className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${
                     tablesReady
-                      ? "bg-emerald-950 text-emerald-300 border-emerald-500/30"
+                      ? "bg-purple-950 text-purple-300 border-purple-500/30"
                       : "bg-amber-950 text-amber-300 border-amber-500/30"
                   }`}
                 >
@@ -311,9 +311,9 @@ export const DashboardPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleCopyPermissionsSql}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600/30 hover:bg-emerald-600 text-emerald-200 hover:text-white font-medium text-xs border border-emerald-500/40 cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-600/30 hover:bg-purple-600 text-purple-200 hover:text-white font-medium text-xs border border-purple-500/40 cursor-pointer transition-colors"
                   >
-                    {copiedPerms ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedPerms ? <Check className="w-3.5 h-3.5 text-purple-400" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedPerms ? "Permissions SQL Copied!" : "Copy Permissions SQL"}</span>
                   </button>
                 ) : (
@@ -322,7 +322,7 @@ export const DashboardPage: React.FC = () => {
                     onClick={handleCopySql}
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-600/30 hover:bg-amber-600 text-amber-200 hover:text-white font-medium text-xs border border-amber-500/40 cursor-pointer transition-colors"
                   >
-                    {copiedSql ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedSql ? <Check className="w-3.5 h-3.5 text-purple-400" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedSql ? "SQL Copied to Clipboard!" : "Copy Full Schema SQL"}</span>
                   </button>
                 )}
@@ -348,11 +348,11 @@ export const DashboardPage: React.FC = () => {
             </div>
           )}
 
-          <div className="mt-5 pt-4 border-t border-emerald-500/15 flex flex-wrap items-center justify-between gap-3">
+          <div className="mt-5 pt-4 border-t border-purple-500/15 flex flex-wrap items-center justify-between gap-3">
             <button
               onClick={handleSyncToSupabase}
               disabled={isSyncing}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold shadow-lg shadow-emerald-700/20 transition-all cursor-pointer disabled:opacity-60"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-bold shadow-lg shadow-purple-700/20 transition-all cursor-pointer disabled:opacity-60"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? "animate-spin" : ""}`} />
               <span>{isSyncing ? "Syncing to Supabase..." : "Sync All Data to Supabase"}</span>
@@ -363,10 +363,10 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Cloudflare R2 Media Card */}
-        <div className="bg-[#071912] border border-emerald-500/25 rounded-3xl p-6 shadow-lg backdrop-blur-md">
+        <div className="bg-[#0c0e29] border border-purple-500/25 rounded-3xl p-6 shadow-lg backdrop-blur-md">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <div className="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400">
                 <Cloud className="w-5 h-5" />
               </div>
               <div>
@@ -374,7 +374,7 @@ export const DashboardPage: React.FC = () => {
                 <p className="text-xs text-stone-400">Direct Presigned & 300MB+ Multipart Video</p>
               </div>
             </div>
-            <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+            <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/40">
               Active Pipeline
             </span>
           </div>
@@ -383,9 +383,9 @@ export const DashboardPage: React.FC = () => {
             Direct-to-R2 upload engine is integrated. Large demo videos (over 20MB up to 1GB+) are sliced into chunks on the client and uploaded directly to R2 without passing through Vercel serverless functions.
           </p>
 
-          <div className="mt-5 pt-4 border-t border-emerald-500/15 flex items-center justify-between text-xs">
+          <div className="mt-5 pt-4 border-t border-purple-500/15 flex items-center justify-between text-xs">
             <span className="text-stone-400">Zero Vercel Payload Limits</span>
-            <span className="text-emerald-400 font-medium">MP4 / WEBM / PDF / JPG</span>
+            <span className="text-purple-400 font-medium">MP4 / WEBM / PDF / JPG</span>
           </div>
         </div>
       </div>
@@ -396,21 +396,21 @@ export const DashboardPage: React.FC = () => {
           <Link
             key={card.title}
             to={card.to}
-            className="group bg-[#071912] border border-emerald-500/20 hover:border-emerald-500/40 rounded-3xl p-6 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/10 flex flex-col justify-between"
+            className="group bg-[#0c0e29] border border-purple-500/20 hover:border-purple-500/40 rounded-3xl p-6 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-purple-500/10 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className={`w-11 h-11 rounded-2xl bg-gradient-to-tr ${card.color} text-white flex items-center justify-center shadow-md`}>
                   <card.icon className="w-5 h-5" />
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-stone-500 group-hover:text-emerald-400 transition-colors" />
+                <ArrowUpRight className="w-4 h-4 text-stone-500 group-hover:text-purple-400 transition-colors" />
               </div>
 
               <div className="text-3xl font-black text-white">{card.value}</div>
               <div className="text-sm font-bold text-stone-200 mt-1">{card.title}</div>
             </div>
 
-            <p className="text-xs text-stone-400 mt-3 pt-3 border-t border-emerald-500/10">
+            <p className="text-xs text-stone-400 mt-3 pt-3 border-t border-purple-500/10">
               {card.desc}
             </p>
           </Link>
@@ -418,43 +418,43 @@ export const DashboardPage: React.FC = () => {
       </div>
 
       {/* Quick Actions Bar */}
-      <div className="bg-[#071912] border border-emerald-500/20 rounded-3xl p-6">
+      <div className="bg-[#0c0e29] border border-purple-500/20 rounded-3xl p-6">
         <h3 className="font-bold text-white text-base mb-4 flex items-center gap-2">
           <span>Quick Actions</span>
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <Link
             to="/admin/projects"
-            className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 hover:border-emerald-500/50 hover:bg-[#0c2f21] transition-all text-center group cursor-pointer"
+            className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 hover:border-purple-500/50 hover:bg-[#1a1e4d] transition-all text-center group cursor-pointer"
           >
-            <FolderGit2 className="w-5 h-5 mx-auto text-emerald-400 mb-2 group-hover:scale-110 transition-transform" />
+            <FolderGit2 className="w-5 h-5 mx-auto text-purple-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="text-xs font-bold text-white">Add Project</div>
             <div className="text-[11px] text-stone-400 mt-0.5">Upload video & images</div>
           </Link>
 
           <Link
             to="/admin/education"
-            className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 hover:border-emerald-500/50 hover:bg-[#0c2f21] transition-all text-center group cursor-pointer"
+            className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 hover:border-purple-500/50 hover:bg-[#1a1e4d] transition-all text-center group cursor-pointer"
           >
-            <GraduationCap className="w-5 h-5 mx-auto text-emerald-400 mb-2 group-hover:scale-110 transition-transform" />
+            <GraduationCap className="w-5 h-5 mx-auto text-purple-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="text-xs font-bold text-white">Update Semester</div>
             <div className="text-[11px] text-stone-400 mt-0.5">Change CGPA & progress</div>
           </Link>
 
           <Link
             to="/admin/documents"
-            className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 hover:border-emerald-500/50 hover:bg-[#0c2f21] transition-all text-center group cursor-pointer"
+            className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 hover:border-purple-500/50 hover:bg-[#1a1e4d] transition-all text-center group cursor-pointer"
           >
-            <FileText className="w-5 h-5 mx-auto text-emerald-400 mb-2 group-hover:scale-110 transition-transform" />
+            <FileText className="w-5 h-5 mx-auto text-purple-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="text-xs font-bold text-white">Upload New CV</div>
             <div className="text-[11px] text-stone-400 mt-0.5">Replace PDF in R2</div>
           </Link>
 
           <Link
             to="/admin/credentials"
-            className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 hover:border-emerald-500/50 hover:bg-[#0c2f21] transition-all text-center group cursor-pointer"
+            className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 hover:border-purple-500/50 hover:bg-[#1a1e4d] transition-all text-center group cursor-pointer"
           >
-            <Award className="w-5 h-5 mx-auto text-emerald-400 mb-2 group-hover:scale-110 transition-transform" />
+            <Award className="w-5 h-5 mx-auto text-purple-400 mb-2 group-hover:scale-110 transition-transform" />
             <div className="text-xs font-bold text-white">Add Certificate</div>
             <div className="text-[11px] text-stone-400 mt-0.5">DigiSkills or course</div>
           </Link>

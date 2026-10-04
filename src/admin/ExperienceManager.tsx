@@ -111,7 +111,7 @@ export const ExperienceManager: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
-            <Briefcase className="w-7 h-7 text-emerald-400" />
+            <Briefcase className="w-7 h-7 text-purple-400" />
             <span>Work Experience & Roles</span>
           </h1>
           <p className="text-xs sm:text-sm text-stone-400 mt-1">
@@ -121,7 +121,7 @@ export const ExperienceManager: React.FC = () => {
 
         <button
           onClick={handleOpenAdd}
-          className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition-all cursor-pointer"
+          className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-purple-600/30 transition-all cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Add Experience</span>
@@ -132,21 +132,21 @@ export const ExperienceManager: React.FC = () => {
         {experienceList.map((item) => (
           <div
             key={item.id}
-            className="bg-[#071912] border border-emerald-500/25 rounded-3xl p-6 shadow-xl flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300"
+            className="bg-[#0c0e29] border border-purple-500/25 rounded-3xl p-6 shadow-xl flex flex-col justify-between hover:border-purple-500/40 transition-all duration-300"
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">
                   {item.type}
                 </span>
                 <span className="text-xs text-stone-400 flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5 text-emerald-400" />
+                  <Calendar className="w-3.5 h-3.5 text-purple-400" />
                   <span>{item.duration}</span>
                 </span>
               </div>
 
               <h3 className="font-bold text-lg text-white mb-0.5">{item.role}</h3>
-              <p className="text-xs font-semibold text-emerald-400 mb-3">{item.company}</p>
+              <p className="text-xs font-semibold text-purple-400 mb-3">{item.company}</p>
 
               <p className="text-xs text-stone-300 leading-relaxed mb-4">
                 {item.description}
@@ -159,18 +159,18 @@ export const ExperienceManager: React.FC = () => {
                 </div>
                 {item.keyResponsibilities?.map((resp, rIdx) => (
                   <div key={rIdx} className="text-xs text-stone-300 flex items-start gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 shrink-0 mt-0.5" />
                     <span>{resp}</span>
                   </div>
                 ))}
               </div>
 
               {/* Tech */}
-              <div className="flex flex-wrap gap-1.5 pt-2 border-t border-emerald-500/15">
+              <div className="flex flex-wrap gap-1.5 pt-2 border-t border-purple-500/15">
                 {item.technologies?.map((tech, tIdx) => (
                   <span
                     key={tIdx}
-                    className="px-2 py-0.5 rounded bg-[#092218] text-stone-300 text-[10px] border border-emerald-500/15"
+                    className="px-2 py-0.5 rounded bg-[#14173d] text-stone-300 text-[10px] border border-purple-500/15"
                   >
                     {tech}
                   </span>
@@ -178,10 +178,10 @@ export const ExperienceManager: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-emerald-500/15 flex items-center justify-end gap-2">
+            <div className="mt-6 pt-4 border-t border-purple-500/15 flex items-center justify-end gap-2">
               <button
                 onClick={() => handleOpenEdit(item)}
-                className="px-3 py-1.5 rounded-lg bg-emerald-600/20 text-emerald-300 hover:bg-emerald-600 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-3 py-1.5 rounded-lg bg-purple-600/20 text-purple-300 hover:bg-purple-600 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <Edit2 className="w-3.5 h-3.5" />
                 <span>Edit</span>
@@ -200,14 +200,14 @@ export const ExperienceManager: React.FC = () => {
 
       {isModalOpen && editingItem && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#071912] border border-emerald-500/30 rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in">
-            <div className="p-6 border-b border-emerald-500/20 flex items-center justify-between">
+          <div className="bg-[#0c0e29] border border-purple-500/30 rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in">
+            <div className="p-6 border-b border-purple-500/20 flex items-center justify-between">
               <h2 className="text-xl font-bold text-white">
                 {editingItem.role ? `Edit: ${editingItem.role}` : "Add Experience Record"}
               </h2>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-2 rounded-xl bg-[#092218] text-stone-400 hover:text-white cursor-pointer"
+                className="p-2 rounded-xl bg-[#14173d] text-stone-400 hover:text-white cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -225,7 +225,7 @@ export const ExperienceManager: React.FC = () => {
                     onChange={(e) => setEditingItem({ ...editingItem, role: e.target.value })}
                     placeholder="e.g. Networking Specialist & Intern"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                   />
                 </div>
 
@@ -239,7 +239,7 @@ export const ExperienceManager: React.FC = () => {
                     onChange={(e) => setEditingItem({ ...editingItem, company: e.target.value })}
                     placeholder="e.g. STS (Success Training System)"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                   />
                 </div>
               </div>
@@ -254,7 +254,7 @@ export const ExperienceManager: React.FC = () => {
                     value={editingItem.duration}
                     onChange={(e) => setEditingItem({ ...editingItem, duration: e.target.value })}
                     placeholder="June 2023 – December 2023"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                   />
                 </div>
 
@@ -267,7 +267,7 @@ export const ExperienceManager: React.FC = () => {
                     value={editingItem.type}
                     onChange={(e) => setEditingItem({ ...editingItem, type: e.target.value })}
                     placeholder="6 Months Practical Experience"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                   />
                 </div>
               </div>
@@ -281,12 +281,12 @@ export const ExperienceManager: React.FC = () => {
                   value={editingItem.description}
                   onChange={(e) => setEditingItem({ ...editingItem, description: e.target.value })}
                   placeholder="Summary of day-to-day contributions..."
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#092218] border border-emerald-500/30 text-white text-sm focus:outline-none focus:border-emerald-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#14173d] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                 />
               </div>
 
               {/* Responsibilities */}
-              <div className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 space-y-3">
+              <div className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 space-y-3">
                 <label className="block text-xs font-bold text-white uppercase tracking-wider">
                   Key Responsibilities
                 </label>
@@ -295,7 +295,7 @@ export const ExperienceManager: React.FC = () => {
                   {(editingItem.keyResponsibilities || []).map((resp, rIdx) => (
                     <div
                       key={rIdx}
-                      className="flex items-start justify-between gap-2 p-2 rounded-lg bg-[#071912] border border-emerald-500/15 text-xs text-stone-200"
+                      className="flex items-start justify-between gap-2 p-2 rounded-lg bg-[#0c0e29] border border-purple-500/15 text-xs text-stone-200"
                     >
                       <span className="flex-1">{resp}</span>
                       <button
@@ -321,12 +321,12 @@ export const ExperienceManager: React.FC = () => {
                       }
                     }}
                     placeholder="Add responsibility bullet..."
-                    className="flex-1 px-3 py-1.5 rounded-xl bg-[#071912] border border-emerald-500/30 text-white text-xs focus:outline-none"
+                    className="flex-1 px-3 py-1.5 rounded-xl bg-[#0c0e29] border border-purple-500/30 text-white text-xs focus:outline-none"
                   />
                   <button
                     type="button"
                     onClick={handleAddResp}
-                    className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold cursor-pointer"
+                    className="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold cursor-pointer"
                   >
                     Add
                   </button>
@@ -334,7 +334,7 @@ export const ExperienceManager: React.FC = () => {
               </div>
 
               {/* Technologies */}
-              <div className="p-4 rounded-2xl bg-[#092218] border border-emerald-500/20 space-y-3">
+              <div className="p-4 rounded-2xl bg-[#14173d] border border-purple-500/20 space-y-3">
                 <label className="block text-xs font-bold text-white uppercase tracking-wider">
                   Tools & Technologies Handled
                 </label>
@@ -343,7 +343,7 @@ export const ExperienceManager: React.FC = () => {
                   {(editingItem.technologies || []).map((tech, tIdx) => (
                     <span
                       key={tIdx}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-500/30"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-950 text-purple-300 border border-purple-500/30"
                     >
                       <span>{tech}</span>
                       <button
@@ -369,29 +369,29 @@ export const ExperienceManager: React.FC = () => {
                       }
                     }}
                     placeholder="Add technology or skill..."
-                    className="flex-1 px-3 py-1.5 rounded-xl bg-[#071912] border border-emerald-500/30 text-white text-xs focus:outline-none"
+                    className="flex-1 px-3 py-1.5 rounded-xl bg-[#0c0e29] border border-purple-500/30 text-white text-xs focus:outline-none"
                   />
                   <button
                     type="button"
                     onClick={handleAddTech}
-                    className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold cursor-pointer"
+                    className="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold cursor-pointer"
                   >
                     Add
                   </button>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-emerald-500/20 flex items-center justify-end gap-3">
+              <div className="pt-4 border-t border-purple-500/20 flex items-center justify-end gap-3">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-[#092218] text-stone-300 text-xs font-semibold cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-[#14173d] text-stone-300 text-xs font-semibold cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-md shadow-emerald-600/30"
+                  className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-md shadow-purple-600/30"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   <span>Save Experience</span>
@@ -405,7 +405,7 @@ export const ExperienceManager: React.FC = () => {
       {/* In-App Delete Confirmation Modal */}
       {deleteConfirmItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="w-full max-w-md bg-[#071912] border border-rose-500/30 rounded-3xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-[#0c0e29] border border-rose-500/30 rounded-3xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
                 <Trash2 className="w-6 h-6" />
@@ -421,7 +421,7 @@ export const ExperienceManager: React.FC = () => {
               <span className="font-semibold text-white">"{deleteConfirmItem.title}"</span>?
             </p>
 
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-emerald-500/10">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-purple-500/10">
               <button
                 type="button"
                 onClick={() => setDeleteConfirmItem(null)}

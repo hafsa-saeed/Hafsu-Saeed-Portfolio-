@@ -375,7 +375,7 @@ export const hobbiesList: HobbyItem[] = [
     description:
       "Constantly testing emergent AI platforms, web development tools, and cutting-edge software utilities.",
     icon: "Cpu",
-    colorClass: "from-emerald-500 to-teal-600",
+    colorClass: "from-purple-500 to-indigo-600",
     tag: "Continuous Learning",
   },
   {
@@ -384,7 +384,7 @@ export const hobbiesList: HobbyItem[] = [
     description:
       "Tackling programming puzzles, building side projects in React and Python, and mastering modern algorithms.",
     icon: "Code2",
-    colorClass: "from-emerald-600 to-green-700",
+    colorClass: "from-purple-600 to-violet-700",
     tag: "Core Passion",
   },
   {
@@ -393,7 +393,7 @@ export const hobbiesList: HobbyItem[] = [
     description:
       "Immersing in computer science texts, technology articles, and inspiring personal development literature.",
     icon: "BookMarked",
-    colorClass: "from-teal-600 to-emerald-700",
+    colorClass: "from-indigo-600 to-purple-700",
     tag: "Mind Growth",
   },
   {
@@ -402,7 +402,7 @@ export const hobbiesList: HobbyItem[] = [
     description:
       "Discovering new landscapes across Pakistan, gaining fresh perspectives, and recharging creativity.",
     icon: "Compass",
-    colorClass: "from-emerald-500 to-amber-500",
+    colorClass: "from-purple-500 to-pink-500",
     tag: "Adventure",
   },
 ];

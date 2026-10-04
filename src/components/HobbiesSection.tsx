@@ -29,18 +29,18 @@ export const HobbiesSection: React.FC = () => {
   return (
     <section
       id="hobbies"
-      className="py-24 px-4 sm:px-6 lg:px-8 relative z-10 bg-stone-100/40 dark:bg-[#05130e]/60"
+      className="py-24 px-4 sm:px-6 lg:px-8 relative z-10 bg-stone-100/40 dark:bg-[#0a0c24]/60"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-500/20 text-purple-600 dark:text-purple-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <HeartHandshake className="w-4 h-4" />
             <span>Passions & Interests</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 dark:text-white tracking-tight">
             Hobbies &{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-500">
               Curiosity
             </span>
           </h2>
@@ -55,21 +55,21 @@ export const HobbiesSection: React.FC = () => {
           {hobbiesList.map((hobby) => (
             <div
               key={hobby.id}
-              className="group relative bg-white/95 dark:bg-[#071912] border border-emerald-500/20 dark:border-emerald-500/30 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-500/50 shadow-xl backdrop-blur-md"
+              className="group relative bg-white/95 dark:bg-[#0e102c] border border-purple-500/20 dark:border-purple-500/30 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-500/10 hover:border-purple-500/50 shadow-xl backdrop-blur-md"
             >
               <div>
                 {/* Icon Container with Animated Gradient */}
                 <div
-                  className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${hobby.colorClass} text-white flex items-center justify-center shadow-md shadow-emerald-500/20 mb-5 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
+                  className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${hobby.colorClass} text-white flex items-center justify-center shadow-md shadow-purple-500/20 mb-5 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
                 >
                   {getIcon(hobby.icon)}
                 </div>
 
-                <span className="inline-block px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 mb-3">
+                <span className="inline-block px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 text-[11px] font-semibold text-purple-700 dark:text-purple-300 border border-purple-500/20 mb-3">
                   {hobby.tag}
                 </span>
 
-                <h3 className="text-lg font-bold text-stone-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-2">
+                <h3 className="text-lg font-bold text-stone-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors mb-2">
                   {hobby.title}
                 </h3>
 
@@ -78,7 +78,7 @@ export const HobbiesSection: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-stone-200/80 dark:border-emerald-500/20 flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+              <div className="pt-3 border-t border-stone-200/80 dark:border-purple-500/20 flex items-center gap-1.5 text-xs text-purple-600 dark:text-purple-400 font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Continuous Lifelong Learning</span>
               </div>

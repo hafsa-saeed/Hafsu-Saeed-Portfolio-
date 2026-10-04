@@ -14,13 +14,13 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
       <div className="max-w-4xl mx-auto text-center">
         {/* Section Heading - Matching Portfolio Objects/Sections */}
         <div className="text-center max-w-2xl mx-auto mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-500/20 text-purple-600 dark:text-purple-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Discover My Journey</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 dark:text-white tracking-tight">
             About{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-500">
               Me
             </span>
           </h2>
@@ -46,27 +46,27 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
 
         {/* Professional Focus - Integrated in one line enclosed with | */}
         <div className="pt-2">
-          <p className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3">
+          <p className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 mb-3">
             Professional Focus
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 gap-y-2 text-xs sm:text-sm font-semibold text-stone-800 dark:text-stone-200">
-            <span className="text-emerald-500/70 font-light select-none">|</span>
-            <span className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+            <span className="text-purple-500/70 font-light select-none">|</span>
+            <span className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
               Full Stack Development
             </span>
-            <span className="text-emerald-500/70 font-light select-none">|</span>
-            <span className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+            <span className="text-purple-500/70 font-light select-none">|</span>
+            <span className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
               AI & Emerging Technologies
             </span>
-            <span className="text-emerald-500/70 font-light select-none">|</span>
-            <span className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+            <span className="text-purple-500/70 font-light select-none">|</span>
+            <span className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
               Modern Web Technologies
             </span>
-            <span className="text-emerald-500/70 font-light select-none">|</span>
-            <span className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+            <span className="text-purple-500/70 font-light select-none">|</span>
+            <span className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
               Problem Solving
             </span>
-            <span className="text-emerald-500/70 font-light select-none">|</span>
+            <span className="text-purple-500/70 font-light select-none">|</span>
           </div>
         </div>
       </div>

@@ -38,64 +38,64 @@
 }
 .dark ::-webkit-scrollbar-track,
 html.dark ::-webkit-scrollbar-track {
-  background: #040c09;
+  background: #060714;
 }
 ::-webkit-scrollbar-thumb {
-  background: #10b981;
+  background: #8b5cf6;
   border-radius: 9999px;
   border: 2px solid #f1f5f9;
 }
 .dark ::-webkit-scrollbar-thumb,
 html.dark ::-webkit-scrollbar-thumb {
-  border-color: #040c09;
-  background: #059669;
+  border-color: #060714;
+  background: #7c3aed;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #047857;
+  background: #6d28d9;
 }
 
-/* Glassmorphism Classes with True Emerald Night Theme */
+/* Glassmorphism Classes with Purple / Indigo Night Theme */
 .glass-card {
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 185, 129, 0.18);
-  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(147, 51, 234, 0.16);
+  box-shadow: 0 10px 30px -10px rgba(147, 51, 234, 0.08);
 }
 
 .dark .glass-card,
 html.dark .glass-card,
 :where(.dark, .dark *) .glass-card {
-  background-color: #071912 !important;
+  background-color: #0e102c !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 185, 129, 0.28) !important;
+  border: 1px solid rgba(168, 85, 247, 0.25) !important;
   box-shadow:
     0 14px 35px -10px rgba(0, 0, 0, 0.8),
-    0 0 15px rgba(16, 185, 129, 0.05) !important;
+    0 0 15px rgba(147, 51, 234, 0.08) !important;
 }
 
 .glass-card-elevated {
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(16, 185, 129, 0.22);
-  box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(147, 51, 234, 0.22);
+  box-shadow: 0 20px 40px -15px rgba(147, 51, 234, 0.12);
 }
 
 .dark .glass-card-elevated,
 html.dark .glass-card-elevated,
 :where(.dark, .dark *) .glass-card-elevated {
-  background-color: #081e16 !important;
+  background-color: #121538 !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(52, 211, 153, 0.3) !important;
+  border: 1px solid rgba(192, 132, 252, 0.3) !important;
   box-shadow:
     0 20px 40px -15px rgba(0, 0, 0, 0.85),
-    0 0 20px rgba(16, 185, 129, 0.08) !important;
+    0 0 20px rgba(147, 51, 234, 0.12) !important;
 }
 
-/* Emerald Dark Sub-cards & Inputs */
+/* Purple Dark Sub-cards & Inputs */
 .dark-inner-card {
   background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(229, 231, 235, 1);
@@ -104,8 +104,8 @@ html.dark .glass-card-elevated,
 .dark .dark-inner-card,
 html.dark .dark-inner-card,
 :where(.dark, .dark *) .dark-inner-card {
-  background-color: #092218 !important;
-  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  background-color: #14173d !important;
+  border: 1px solid rgba(168, 85, 247, 0.25) !important;
 }
 
 /* Custom Keyframe Animations */
@@ -123,13 +123,13 @@ html.dark .dark-inner-card,
   0%,
   100% {
     box-shadow:
-      0 0 20px rgba(16, 185, 129, 0.35),
-      inset 0 0 15px rgba(16, 185, 129, 0.15);
+      0 0 20px rgba(168, 85, 247, 0.35),
+      inset 0 0 15px rgba(168, 85, 247, 0.15);
   }
   50% {
     box-shadow:
-      0 0 35px rgba(16, 185, 129, 0.7),
-      inset 0 0 25px rgba(16, 185, 129, 0.35);
+      0 0 35px rgba(168, 85, 247, 0.7),
+      inset 0 0 25px rgba(168, 85, 247, 0.35);
   }
 }
 

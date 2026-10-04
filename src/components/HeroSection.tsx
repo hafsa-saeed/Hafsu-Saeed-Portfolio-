@@ -59,9 +59,9 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
       className="relative min-h-screen flex flex-col justify-center items-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* Soft radial backdrop glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-emerald-400/15 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-purple-400/15 dark:bg-purple-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
-      <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] bg-teal-300/15 dark:bg-teal-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] bg-indigo-300/15 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-5xl mx-auto w-full flex flex-col items-center text-center z-10">
 
@@ -69,12 +69,12 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
         <div className="relative mb-6 sm:mb-8 group">
 
           {/* Animated glow aura */}
-          <div className="absolute -inset-2.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-amber-300 rounded-full blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
+          <div className="absolute -inset-2.5 bg-gradient-to-tr from-purple-500 via-indigo-500 to-pink-400 rounded-full blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
 
           {/* Floating Outer Circle */}
-          <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-gradient-to-tr from-emerald-600 via-emerald-400 to-teal-300 shadow-xl shadow-emerald-500/25 animate-float">
+          <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-gradient-to-tr from-purple-600 via-violet-500 to-indigo-400 shadow-xl shadow-purple-500/25 animate-float">
 
-            <div className="w-full h-full rounded-full overflow-hidden bg-emerald-950 border-4 border-white dark:border-[#0a1e16] relative flex items-center justify-center">
+            <div className="w-full h-full rounded-full overflow-hidden bg-[#121538] border-4 border-white dark:border-[#14173d] relative flex items-center justify-center">
 
               {/* High-quality portrait representation */}
               <img
@@ -84,11 +84,11 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
               />
 
               {/* Subtle glass reflection overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 via-transparent to-white/10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/40 via-transparent to-white/10 pointer-events-none" />
             </div>
 
             {/* Active Status Badge */}
-            <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 px-2.5 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] sm:text-xs font-bold shadow-md flex items-center gap-1 border-2 border-white dark:border-[#0a1e16] animate-pulse">
+            <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 px-2.5 py-0.5 rounded-full bg-purple-600 text-white text-[10px] sm:text-xs font-bold shadow-md flex items-center gap-1 border-2 border-white dark:border-[#14173d] animate-pulse">
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
               <span>Available</span>
             </div>
@@ -99,7 +99,7 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
         {/* Main Name & Title */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-stone-900 dark:text-white mb-4">
           Hi, I'm{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600">
             {personalInfo.name}
           </span>
         </h1>
@@ -109,7 +109,7 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-stone-700 dark:text-stone-200 flex items-center">
             <span>{currentText}</span>
 
-            <span className="w-0.5 h-6 sm:h-8 bg-emerald-500 ml-1.5 animate-ping inline-block" />
+            <span className="w-0.5 h-6 sm:h-8 bg-purple-500 ml-1.5 animate-ping inline-block" />
           </h2>
         </div>
 
@@ -128,7 +128,7 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
             href="/Hafsa_Saeed_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 min-w-[160px] py-3.5 px-6 rounded-2xl font-semibold text-sm sm:text-base text-white bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105 active:scale-98 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+            className="flex-1 min-w-[160px] py-3.5 px-6 rounded-2xl font-semibold text-sm sm:text-base text-white bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105 active:scale-98 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
           >
             <FileText className="w-4 h-4" />
             <span>View CV</span>
@@ -137,9 +137,9 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
           <a
             href="/Hafsa_Saeed_CV.pdf"
             download="Hafsa_Saeed_CV.pdf"
-            className="flex-1 min-w-[160px] py-3.5 px-6 rounded-2xl font-semibold text-sm sm:text-base text-emerald-800 dark:text-emerald-200 bg-white/80 dark:bg-[#0b241b]/90 hover:bg-emerald-50 dark:hover:bg-[#103427] border-2 border-emerald-500/40 hover:border-emerald-500 shadow-md shadow-emerald-500/10 hover:scale-105 active:scale-98 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
+            className="flex-1 min-w-[160px] py-3.5 px-6 rounded-2xl font-semibold text-sm sm:text-base text-purple-800 dark:text-purple-200 bg-white/80 dark:bg-[#14173d]/90 hover:bg-purple-50 dark:hover:bg-[#1c2156] border-2 border-purple-500/40 hover:border-purple-500 shadow-md shadow-purple-500/10 hover:scale-105 active:scale-98 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
           >
-            <Download className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <Download className="w-4 h-4 text-purple-600 dark:text-purple-400" />
             <span>Download CV</span>
           </a>
 

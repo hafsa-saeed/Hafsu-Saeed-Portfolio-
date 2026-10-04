@@ -17,7 +17,7 @@ export const PublicPortfolio: React.FC = () => {
   const [isDark, setIsDark] = useState<boolean>(() => {
     const saved = localStorage.getItem("portfolio_theme");
     if (saved) return saved === "dark";
-    return false; // Pristine light emerald theme
+    return false; // Pristine light theme
   });
 
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
@@ -37,7 +37,7 @@ export const PublicPortfolio: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-stone-50 dark:bg-[#06120d] text-stone-900 dark:text-stone-100 selection:bg-emerald-500 selection:text-white transition-colors duration-300 overflow-x-hidden">
+    <div className="relative min-h-screen bg-stone-50 dark:bg-[#070818] text-stone-900 dark:text-stone-100 selection:bg-purple-600 selection:text-white transition-colors duration-300 overflow-x-hidden">
       {/* Animated Glowing Cursor Follower */}
       <CursorFollower />
 
