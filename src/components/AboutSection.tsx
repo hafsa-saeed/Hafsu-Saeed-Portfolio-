@@ -9,11 +9,11 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
   return (
     <section
       id="about"
-      className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 relative z-10"
+      className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative z-10"
     >
       <div className="max-w-4xl mx-auto text-center">
         {/* Section Heading - Matching Portfolio Objects/Sections */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Discover My Journey</span>
@@ -27,7 +27,7 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
         </div>
 
         {/* Two Short Professional Paragraphs */}
-        <div className="max-w-2xl mx-auto space-y-4 text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed mb-10">
+        <div className="max-w-2xl mx-auto space-y-4 text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed mb-8">
           <p>
             I am a Full Stack Developer dedicated to engineering clean,
             responsive, and performance-driven web applications. My work
