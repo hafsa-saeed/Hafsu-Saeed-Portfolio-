@@ -104,11 +104,11 @@ export const ContactSection: React.FC = () => {
   return (
     <section
       id="contact"
-      className="py-24 px-4 sm:px-6 lg:px-8 relative z-10"
+      className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative z-10"
     >
       <div className="max-w-3xl mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Get In Touch</span>
